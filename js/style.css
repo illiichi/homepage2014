@@ -1,0 +1,76 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  background: none repeat scroll 0 0 #FF0000;
+  width:100%;
+  height: 600px;
+  position: fixed;
+  top:0;
+}
+.control-panel-container {
+    margin: 100px auto;
+    width: 340px;
+}
+.back-panel{
+    position: absolute;
+    width: 340px;
+    height: 300px;
+    opacity: 0.5;
+    background: white;
+}
+.control-panel {
+    position: absolute;
+    font-family: monospace;
+    padding: 20px;
+}
+
+
+.control-panel > .header{
+    margin-bottom: 10px;
+}
+
+.control-panel > .header > .logo {
+    width: 80px;
+    padding-right: 10px;
+}
+
+.control-panel > .header > .kanji {
+    width: 200px;
+    vertical-align: super;
+}
+
+.control-panel > input {
+    font-size: x-large;
+    border-width: medium medium 1px;
+    border-style: none none solid;
+    border-color: -moz-use-text-color -moz-use-text-color rgb(170, 170, 170);
+    margin-bottom: 10px;
+    background: none;
+    width: 90%;
+}
+
+ul {
+    margin: 0 0 0 1em;
+    padding: 0;
+}
+
+.nest-menu {
+  position: absolute;
+  width: 100px;
+}
+
+.nest-menu > ul {
+  left: 55px;
+  position: absolute;
+  top: 0;
+  width: 200px;
+  list-style-type: none;
+}
