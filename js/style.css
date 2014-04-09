@@ -28,7 +28,7 @@ body {
 }
 .control-panel {
     position: absolute;
-    font-family: monospace;
+    font-family: "Cutive Mono", monospace;
     padding: 20px;
 }
 
@@ -55,6 +55,7 @@ body {
     margin-bottom: 10px;
     background: none;
     width: 90%;
+    outline:none;
 }
 
 ul {
@@ -68,7 +69,7 @@ ul {
 }
 
 .nest-menu > ul {
-  left: 55px;
+  left: 80px;
   position: absolute;
   top: 0;
   width: 200px;
