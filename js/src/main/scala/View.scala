@@ -7,12 +7,13 @@ import scalatags.SvgTags._
 import scalatags.SvgStyles._
 import js.Dynamic.{ global => g }
 import rx._
+import rx.ops._
 
 object View {
   def render(): Unit = {
     g.document.body.innerHTML = 
       div(
-        div(`class` := "container"),
+        div(id := "container"),
         div(`class` := "control-panel-container")(
           div(`class` := "back-panel"),
           div(`class` := "control-panel")(
@@ -56,6 +57,11 @@ object View {
     g.window.onresize = { _:js.Dynamic =>
       screenSize() = getScreenSize()
     }
-    Obs(screenSize){ g.console.log(screenSize().toString)}
+    screenSize.foreach{ case (x, y) =>
+        val style = g.document.getElementById("container").style
+        style.width = s"${x}px"
+        style.height = s"${y}px"
+        g.console.log((x, y).toString)
+    }
   }
 }
