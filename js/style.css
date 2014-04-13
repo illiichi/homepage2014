@@ -9,12 +9,19 @@ body {
 }
 
 #container {
-  background: none repeat scroll 0 0 #FF0000;
   width:100%;
   height: 600px;
   position: fixed;
   top:0;
 }
+
+#container > .container-front, #container > .container-back{
+    position: absolute;
+}
+#container > .container-front{
+    background: white;
+}
+
 .control-panel-container {
     margin: 100px auto;
     width: 340px;
@@ -74,4 +81,9 @@ ul {
   top: 0;
   width: 200px;
   list-style-type: none;
+}
+
+.container-back > canvas {
+    width: 300px;
+    height: 300px;
 }
