@@ -9,6 +9,10 @@ import js.Dynamic.{ global => g }
 import rx._
 import rx.ops._
 
+import definition.Const
+import definition.Const.Ids
+import definition.Const.Classes
+
 object View{
   def start(
     menuInput: Var[String], screenSize: Var[(Int, Int)],
@@ -22,21 +26,15 @@ object View{
   def render(): Unit = {
     g.document.body.innerHTML = 
       div(
-        div(id := "container")(
-          div(`class`:="container-back")(
-            canvas(id:="back-canvas")
+        div(id := Ids.container)(
+          div(`class`:= Classes.container_back)(
+            canvas(id:=Ids.back_canvas)
           ),
-          div(`class`:="container-front", id:="container-front")(
-            for((ident, path) <- Seq(
-              ("fukusuke", "images/fukusuke1.svg"), 
-              ("fukusuke_peko", "images/fukusuke2.svg"), 
-              ("fukusuke_glass", "images/fukusuke3.svg"),
-              ("fish", "images/fish.svg"),
-              ("fish2","images/fish02.svg"))
-            ) yield img(id:=ident, src := path)
+          div(`class`:= Classes.container_front, id:=Ids.container_front)(
+            for((ident, path) <- Const.imageUrls) yield img(id:=ident, src := path)
           )
         ),
-        div(`class` := "control-panel-container")(
+        div(`class` := Classes.control_panel_container)(
           div(`class` := "back-panel"),
           div(`class` := "control-panel")(
             div(`class` := "header")(
@@ -64,9 +62,7 @@ object View{
   }
 
   def grid(width:Int, height:Int)  = {
-    val c = g.document.getElementById("back-canvas")
-    c.width = width
-    c.height = height
+    val c = g.document.getElementById(Ids.back_canvas)
     val ctx = (c.asInstanceOf[js.Dynamic]).getContext("2d")
     val (w, h) = (width / 30, height / 30)
     ctx.beginPath()
@@ -81,7 +77,7 @@ object View{
   }
 
   def eventHook(menuInput: Var[String], screenSize: Var[(Int, Int)]){
-    val menuInputElement = g.document.getElementById("menu-input")
+    val menuInputElement = g.document.getElementById(Ids.menu_input)
     menuInputElement.oninput = { (e:js.Dynamic) => 
       menuInput() = e.target.value.asInstanceOf[String]
     }
@@ -93,7 +89,7 @@ object View{
       screenSize() = (toInt(s.clientWidth), toInt(s.clientHeight))
     }
     screenSize.foreach{ case (x, y) =>
-        Seq("container", "container-front", "back-canvas").foreach{ id =>
+        Seq(Ids.container, Ids.container_front, Ids.back_canvas).foreach{ id =>
           val style = g.document.getElementById(id).style
           style.width = s"${x}px"
           style.height = s"${y}px"
