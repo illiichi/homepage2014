@@ -12,11 +12,13 @@ case class   OpenPage(url: String)  extends Action
 case class   ShowSlide(url: String) extends Action
 
 trait Definition{
-  type Style = String
+  type Style = (String, String)
   def menu: Seq[(String, (Effect, Action))]
   lazy val parser = new InputParser(menu)
-  def effect(state: parser.InputState): Seq[Style]
-  def action(action: Action): Unit
+  def styles(effect: Effect, count: Option[Int]): Seq[Style]
+  def doIt(action: Action): Unit
+  def defaultStyles: Seq[Style]
+  def illegalStyles: Seq[Style]
 }
 
 object IlliIchiPage extends Definition{
@@ -30,6 +32,9 @@ object IlliIchiPage extends Definition{
     ("slide of elm"                 , (RollingFukusuke(3) ,  ShowSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
     ("slide of clojurescript"       , (RollingFukusuke(13) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
     )
+
+  val defaultStyles = Seq(("fukusuke", "display:none"))
+  val illegalStyles = Seq()
 /*
 <iframe src="http://www.slideshare.net/slideshow/embed_code/14441333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/scala-14441333" title="Scalaノススメ" target="_blank">Scalaノススメ</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
 <iframe src="http://www.slideshare.net/slideshow/embed_code/16705652" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/elmfunctional-reactive-programming" title="Elmで始めるFunctional Reactive Programming " target="_blank">Elmで始めるFunctional Reactive Programming </a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
@@ -37,6 +42,6 @@ object IlliIchiPage extends Definition{
 <iframe src="http://www.slideshare.net/slideshow/embed_code/27494131" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/clojurescript" title="ClojureScriptという選択肢" target="_blank">ClojureScriptという選択肢</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
  */
 
-  def effect(state: parser.InputState) = Seq()
-  def action(action: Action){}
+  def styles(effect: Effect, count: Option[Int]) = Seq(("fukusuke_peko", "display:none"))
+  def doIt(action: Action){}
 }

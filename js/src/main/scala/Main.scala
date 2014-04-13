@@ -19,7 +19,15 @@ object Main {
     view.View.start(menuText, screenSize, styles)
   }
 
-  def mainFlow(inputState: InputState, screenSize: (Int, Int)) = {
-    Seq(("fukusuke", "display:none"))
+  def mainFlow(inputState: InputState, screenSize: (Int, Int)):Seq[(String, String)] = {
+    import definition.parser._
+    inputState match {
+      case NoInput => definition.defaultStyles
+      case DuringInput((effect, _), count) => definition.styles(effect, Some(count))
+      case Complete((effect, action)) => 
+        definition.doIt(action)
+        definition.styles(effect, None)
+      case WrongInput => definition.illegalStyles
+    }    
   }
 }
