@@ -15,10 +15,10 @@ trait Definition{
   type Style = (String, String)
   def menu: Seq[(String, (Effect, Action))]
   lazy val parser = new InputParser(menu)
-  def styles(effect: Effect, count: Option[Int]): Seq[Style]
+  def styles(effect: Effect, count: Option[Int]): Map[String, String]
   def doIt(action: Action): Unit
-  def defaultStyles: Seq[Style]
-  def illegalStyles: Seq[Style]
+  def defaultStyles: Map[String, String]
+  def illegalStyles: Map[String, String]
 }
 
 object IlliIchiPage extends Definition{
@@ -33,10 +33,10 @@ object IlliIchiPage extends Definition{
     ("slide of clojurescript"       , (RollingFukusuke(13) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
     )
 
-  val defaultStyles = Seq(("fukusuke", "display:none"))
-  val illegalStyles = Seq()
+  val defaultStyles = Map("fukusuke" -> "display:none")
+  val illegalStyles = Map("fukusuke_glass" -> "display:none")
 
-  def styles(effect: Effect, count: Option[Int]) = Seq(("fukusuke_peko", "display:none"))
+  def styles(effect: Effect, count: Option[Int]) = Map("fukusuke_peko" -> "display:none")
   def doIt(action: Action){}
 
 /*
