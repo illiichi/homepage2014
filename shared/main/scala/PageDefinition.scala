@@ -25,7 +25,6 @@ object IlliIchiPage extends Definition{
     ("about me"                     , (Introduction , JustSee)) ,
     ("what's illi-ichi"             , (FallForward , JustSee)) ,
     ("show code (open github page)" , (FukusukeGlassOn , OpenPage("https://github.com/illi-ichi"))) ,
-/* window.open("http://www.google.co.jp", "_blank") */
     ("slide of scala"               , (RollingFukusuke(5) ,  ShowSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
     ("slide of amber smalltalk"     , (RollingFukusuke(15) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
     ("slide of elm"                 , (RollingFukusuke(3) ,  ShowSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
@@ -46,16 +45,29 @@ object IlliIchiPage extends Definition{
     val background = Figure(Ids.container_front, 1.0)
   }
   import model.Screen._
-  val menuStyle = Figures.menu.style(Point(Center.point, 0.3), 0.6, origin = Figure.Center)
+  val menuStyle = Figures.menu.style(Point(Center.point, 0.4), 0.4, origin = Figure.Center)
   object Background{
     val default = Figures.background.css("background:white;")
     val illegal = Figures.background.css("background:red;")
   }
-  val defaultStyles = Figures.all.map(_.hide) :+ menuStyle :+ Background.default
-  val illegalStyles = defaultStyles :+ Background.illegal
+  val base = Figures.all.map(_.hide) :+ menuStyle :+ Background.default
+  val defaultStyles = base :+ Fukusuke.base
+  object Fukusuke {
+    val apology = Figures.fukusuke_peko.style(
+      Point(Center.point, 0.5), 0.8, origin = Figure.Center)
+
+    val base = Figures.fukusuke.style(
+      Point(Left(0.8), 0.9), 0.2, origin = Figure.RightBottom)
+  }
+  val illegalStyles = base :+ Background.illegal :+ Fukusuke.apology
 
   def styles(effect: Effect, count: Option[Int]) = defaultStyles
-  def doIt(action: Action){}
+  def doIt(action: Action){
+    action match {
+      case OpenPage(url) => view.View.openUrl(url)
+      case _ => 
+    }
+  }
 
 
 /*

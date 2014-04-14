@@ -113,3 +113,9 @@ class View(){
     (toInt(s.clientWidth), toInt(s.clientHeight))
   }
 }
+
+object View{
+  def openUrl(url: String){
+    g.window.open(url, "_blank")
+  }
+}
