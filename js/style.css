@@ -22,9 +22,10 @@ body {
     background: white;
 }
 
+.figure {
+    position: fixed;
+}
 .control-panel-container {
-    margin: 100px auto;
-    width: 340px;
 }
 .back-panel{
     position: absolute;

@@ -12,6 +12,7 @@ object Const{
     val back_canvas = "back-canvas"
     val container_front = "container-front"
 
+    val control_panel_container = "control-panel-container"
     val menu_input = "menu-input"
   }
 
@@ -19,6 +20,7 @@ object Const{
     val container_back = "container-back"
     val container_front = "container-front"
     val control_panel_container = "control-panel-container"
+    val figure = "figure"
   }
 
   val objects = {

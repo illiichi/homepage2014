@@ -35,9 +35,17 @@ object IlliIchiPage extends Definition{
   object Figures{
     import definition.Const.Ids
     val fukusuke = Figure(Ids.fukusuke, 1.0)
+    val fukusuke_peko = Figure(Ids.fukusuke_peko, 1.0)
+    val fukusuke_glass = Figure(Ids.fukusuke_glass, 1.0)
+    val fish = Figure(Ids.fish, 0.5)
+    val fish2 = Figure(Ids.fish2, 0.53)
+
+    val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2)
+
+    val menu = Figure(Ids.control_panel_container, 0.88)
   }
   import model.Screen._
-  val defaultStyles = Seq(Figures.fukusuke.style(Point(Left.edge, 0.0), 0.2))
+  val defaultStyles = Figures.all.map(_.hide) :+ Figures.menu.style(Point(Center.point, 0.3), 0.6)
   val illegalStyles = Seq()
 
   def styles(effect: Effect, count: Option[Int]) = Seq()

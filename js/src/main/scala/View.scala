@@ -32,10 +32,12 @@ class View(){
             canvas(id:=Ids.back_canvas)
           ),
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
-            for((ident, path) <- Const.imageUrls) yield img(id:=ident, src := path)
+            for(
+              (ident, path) <- Const.imageUrls
+            ) yield img(id:=ident, `class` := Classes.figure, src := path)
           )
         ),
-        div(`class` := Classes.control_panel_container)(
+        div(`class` := Classes.figure, id:= Ids.control_panel_container)(
           div(`class` := "back-panel"),
           div(`class` := "control-panel")(
             div(`class` := "header")(
