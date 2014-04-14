@@ -26,6 +26,7 @@ body {
     position: fixed;
 }
 .control-panel-container {
+    min-width: 300px;
 }
 .back-panel{
     position: absolute;
@@ -38,6 +39,7 @@ body {
     position: absolute;
     font-family: "Cutive Mono", monospace;
     padding: 20px;
+    width: 100%;
 }
 
 
@@ -46,12 +48,12 @@ body {
 }
 
 .control-panel > .header > .logo {
-    width: 80px;
+    width: 30%;
     padding-right: 10px;
 }
 
 .control-panel > .header > .kanji {
-    width: 200px;
+    width: 60%;
     vertical-align: super;
 }
 

@@ -37,7 +37,9 @@ class View(){
             ) yield img(id:=ident, `class` := Classes.figure, src := path)
           )
         ),
-        div(`class` := Classes.figure, id:= Ids.control_panel_container)(
+        div(
+          `class` := s"${Classes.figure} ${Classes.control_panel_container}",
+          id:= Ids.control_panel_container)(
           div(`class` := "back-panel"),
           div(`class` := "control-panel")(
             div(`class` := "header")(

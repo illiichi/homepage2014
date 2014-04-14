@@ -45,7 +45,7 @@ object IlliIchiPage extends Definition{
     val menu = Figure(Ids.control_panel_container, 0.88)
   }
   import model.Screen._
-  val defaultStyles = Figures.all.map(_.hide) :+ Figures.menu.style(Point(Center.point, 0.3), 0.6)
+  val defaultStyles = Figures.all.map(_.hide) :+ Figures.menu.style(Point(Center.point, 0.3), 0.6, origin = Figure.Center)
   val illegalStyles = Seq()
 
   def styles(effect: Effect, count: Option[Int]) = Seq()
