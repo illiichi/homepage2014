@@ -11,12 +11,12 @@ object Main {
 
   @JSExport
   def main(): Unit = {
-    val menuText = Var("")
-    val screenSize = Var((0,0))
-    val inputState = menuText.map(definition.parser.parse)
-    val styles = Rx { mainFlow(inputState(), screenSize()) }
+    val view = new _root_.view.View()
 
-    view.View.start(menuText, screenSize, styles)
+    val inputState = view.menuText.map(definition.parser.parse)
+    val styles = Rx { mainFlow(inputState(), view.screenSize()) }
+
+    view.start(styles)
   }
 
   def mainFlow(inputState: InputState, screenSize: (Int, Int)):Seq[(String, String)] = {

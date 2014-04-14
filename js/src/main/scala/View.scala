@@ -13,13 +13,14 @@ import definition.Const
 import definition.Const.Ids
 import definition.Const.Classes
 
-object View{
-  def start(
-    menuInput: Var[String], screenSize: Var[(Int, Int)],
-    styles: Rx[Seq[(String, String)]]){
+class View(){
+  val menuText = Var("")
+  val screenSize = Var(windowSize())
+
+  def start(styles: Rx[Seq[(String, String)]]){
     render()
 
-    eventHook(menuInput, screenSize)
+    eventHook(menuText, screenSize)
     styles.foreach(changeAttribute)
   }
 
@@ -76,17 +77,15 @@ object View{
     ctx.stroke()
   }
 
-  def eventHook(menuInput: Var[String], screenSize: Var[(Int, Int)]){
-    val menuInputElement = g.document.getElementById(Ids.menu_input)
-    menuInputElement.oninput = { (e:js.Dynamic) => 
-      menuInput() = e.target.value.asInstanceOf[String]
+  def eventHook(menuText: Var[String], screenSize: Var[(Int, Int)]){
+    val menuText = g.document.getElementById(Ids.menu_input)
+    menuText.oninput = { (e:js.Dynamic) => 
+      menuText() = e.target.value.asInstanceOf[String]
     }
-    menuInputElement.focus()
+    menuText.focus()
 
     g.window.onresize = { _:js.Dynamic =>
-      val s = g.document.documentElement
-      def toInt(n: js.Dynamic) = n.asInstanceOf[js.Number].toInt
-      screenSize() = (toInt(s.clientWidth), toInt(s.clientHeight))
+      screenSize() = windowSize() 
     }
     screenSize.foreach{ case (x, y) =>
         Seq(Ids.container, Ids.container_front, Ids.back_canvas).foreach{ id =>
@@ -102,5 +101,11 @@ object View{
     xs.foreach { case (id, style) =>
         g.document.getElementById(id).style = style
     }
+  }
+
+  def windowSize() = {
+    val s = g.document.documentElement
+    def toInt(n: js.Dynamic) = n.asInstanceOf[js.Number].toInt
+    (toInt(s.clientWidth), toInt(s.clientHeight))
   }
 }
