@@ -33,37 +33,34 @@ case class Figure(id: String, aspectRatio: Double){
 
   def style(
     location: VirtualPosition, 
-    size: Horizontal,
+    size: Double,
     scale: Double = 1.0,
     origin: Position = LeftTop,
     additionalStyle:ScreenPosition => String = NoMore
   ): Style = { (conv: Screen.Converter) =>
-    def toStyle(x:Double, y: Double, width: Double, height: Double) =
+    def p[A](f: =>A) = {val a = f; println(a); a}
+    def toStyle(x:Double, y: Double, width: Double, height: Double) = p{
       (id, Seq(
         s"width:${width.toInt}px;height:${height.toInt}px;",
         s"top:${y.toInt}px;left:${x.toInt}px;"
       ).mkString)
+    }
 
-    (origin, (location, size)) match {
-      case (LeftTop, (leftTop, right)) => 
-        val (x1, y1) = conv(leftTop)
-        val x2 = conv.horizontal(right)
-        val width = x2 - x1
-        val height = width * aspectRatio
+    val width = conv.actual(size)
+    val height = width * aspectRatio
+
+    origin match {
+      case LeftTop =>         
+        val (x1, y1) = conv(location)
+        val x2 = x1 + width
         toStyle(x1, y1, width, height)
-      case (Center, (center, right)) =>
-        val (cx, cy) = conv(center)
-        val x2 = conv.horizontal(right)
-        val width = Math.abs(x2 - cx) * 2
-        val height = width * aspectRatio
+      case Center =>
+        val (cx, cy) = conv(location)
         val (x1, y1) = (cx - width / 2, cy - height / 2)
         toStyle(x1, y1, width, height)
-      case (RightBottom, (rightBottom, left)) =>
-        val (x2, y2) = conv(rightBottom)
-        val x1 = conv.horizontal(left)
-        val width = x2 - x1
-        val height = width * aspectRatio
-        val y1 = y2 - height
+      case RightBottom =>
+        val (x2, y2) = conv(location)
+        val (x1, y1) = (x2 - width, y2 - height)
         toStyle(x1, y1, width, height)
     }
   }

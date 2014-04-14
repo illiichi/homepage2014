@@ -37,7 +37,7 @@ object IlliIchiPage extends Definition{
     val fukusuke = Figure(Ids.fukusuke, 1.0)
   }
   import model.Screen._
-  val defaultStyles = Seq(Figures.fukusuke.style(Point(Left.edge, 0.0), Center(0.2)))
+  val defaultStyles = Seq(Figures.fukusuke.style(Point(Left.edge, 0.0), 0.2))
   val illegalStyles = Seq()
 
   def styles(effect: Effect, count: Option[Int]) = Seq()

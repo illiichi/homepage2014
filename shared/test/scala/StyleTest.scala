@@ -11,12 +11,12 @@ object StyleTest extends TestSuite{
     "none" -{
       val (id, style) = fig.hide(conv)
       assert(style == "display:none;")
-    }
+    } 
 
     val l  = Point(Center.point, 0.5)
 
     "left_top" -{
-      val (id, style) = fig.style(l, Center(0.8))(conv)
+      val (id, style) = fig.style(l, 0.3)(conv)
       assert(
         style.contains("width:300px;"),
         style.contains("height:150px;"),
@@ -26,16 +26,7 @@ object StyleTest extends TestSuite{
     }
 
     "center" -{
-      val (id, style) = fig.style(l, Center(0.8), origin = Figure.Center)(conv)
-      assert(
-        style.contains("width:600px;"),
-        style.contains("height:300px;"),
-        style.contains("top:350px;"),
-        style.contains("left:200px;")
-      )
-    }
-    "center2" -{
-      val (id, style) = fig.style(l, Center(0.2), origin = Figure.Center)(conv)
+      val (id, style) = fig.style(l, 0.6, origin = Figure.Center)(conv)
       assert(
         style.contains("width:600px;"),
         style.contains("height:300px;"),
@@ -44,7 +35,7 @@ object StyleTest extends TestSuite{
       )
     }
     "right" -{
-      val (id, style) = fig.style(l, Center(0.2), origin = Figure.RightBottom)(conv)
+      val (id, style) = fig.style(l, 0.3, origin = Figure.RightBottom)(conv)
       assert(
         style.contains("width:300px;"),
         style.contains("height:150px;"),

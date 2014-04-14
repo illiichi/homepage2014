@@ -15,8 +15,7 @@ object Screen{
   // 0 <= rate <= 1
   case class Between(from: Point, to: Point, rate: Double) extends VirtualPosition
 
-  type VirtualSize = VirtualPosition
-  val ratio = 1.0
+  val ratio = 1.0  // it will not work if ratio isn't 1
 
   class Converter(width: Int, height: Int) {
     def this(t: (Int, Int)) = this(t._1, t._2)
@@ -49,6 +48,8 @@ object Screen{
       case Center(x) => cx + cw * x
       case Right(x) => cw + cx * (1 + x)
     }
+    def actual(x: Double):Int = (x * cw).toInt
+
 
     def vertical(r: Double) = cy + ch * r
   }
