@@ -29,9 +29,7 @@ object Screen{
       def floor(t:(Double, Double)) = (t._1.toInt, t._2.toInt)
       floor (
         v match {
-          case Point(Left(x), y) => (cx * x, vertical(y))
-          case Point(Center(x), y) => (cx + cw * x, vertical(y))
-          case Point(Right(x), y) => (cw  + cx * (1 + x), vertical(y))
+          case Point(h, y) => (horizontal(h), vertical(y))
           case Between(from, to, r) => {
             def middle(x1: Double, x2: Double) =
               if(x1 < x2) (x2 - x1) * r + x1
@@ -43,6 +41,11 @@ object Screen{
           }
         }
       )
+    }
+    def horizontal(h: Horizontal) = h match {
+      case Left(x) => cx * x
+      case Center(x) => cx + cw * x
+      case Right(x) => cw + cx * (1 + x)
     }
 
     def vertical(r: Double) = cy + ch * r
