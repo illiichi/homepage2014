@@ -29,6 +29,6 @@ object Main {
         definition.doIt(action)
         definition.styles(effect, None)
       case WrongInput => definition.illegalStyles
-    }).map{ f => f(converter)}
+    }).map{ f => val r = f(converter); println(r);r}
   }
 }

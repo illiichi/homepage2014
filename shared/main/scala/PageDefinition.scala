@@ -42,13 +42,19 @@ object IlliIchiPage extends Definition{
 
     val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2)
 
-    val menu = Figure(Ids.control_panel_container, 0.88)
+    val menu = Figure(Ids.control_panel_container, 1.13)
+    val background = Figure(Ids.container_front, 1.0)
   }
   import model.Screen._
-  val defaultStyles = Figures.all.map(_.hide) :+ Figures.menu.style(Point(Center.point, 0.3), 0.6, origin = Figure.Center)
-  val illegalStyles = Seq()
+  val menuStyle = Figures.menu.style(Point(Center.point, 0.3), 0.6, origin = Figure.Center)
+  object Background{
+    val default = Figures.background.css("background:white;")
+    val illegal = Figures.background.css("background:red;")
+  }
+  val defaultStyles = Figures.all.map(_.hide) :+ menuStyle :+ Background.default
+  val illegalStyles = defaultStyles :+ Background.illegal
 
-  def styles(effect: Effect, count: Option[Int]) = Seq()
+  def styles(effect: Effect, count: Option[Int]) = defaultStyles
   def doIt(action: Action){}
 
 

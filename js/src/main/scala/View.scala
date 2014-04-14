@@ -26,7 +26,7 @@ class View(){
 
   def render(): Unit = {
     g.document.body.innerHTML = 
-      div(
+      div(id:=Ids.background)(
         div(id := Ids.container)(
           div(`class`:= Classes.container_back)(
             canvas(id:=Ids.back_canvas)
@@ -82,17 +82,17 @@ class View(){
   }
 
   def eventHook(menuText: Var[String], screenSize: Var[(Int, Int)]){
-    val menuText = g.document.getElementById(Ids.menu_input)
-    menuText.oninput = { (e:js.Dynamic) => 
+    val menuInput = g.document.getElementById(Ids.menu_input)
+    menuInput.oninput = { (e:js.Dynamic) => 
       menuText() = e.target.value.asInstanceOf[String]
     }
-    menuText.focus()
+    menuInput.focus()
 
     g.window.onresize = { _:js.Dynamic =>
       screenSize() = windowSize() 
     }
     screenSize.foreach{ case (x, y) =>
-        Seq(Ids.container, Ids.container_front, Ids.back_canvas).foreach{ id =>
+        Seq(Ids.container, Ids.back_canvas).foreach{ id =>
           val style = g.document.getElementById(id).style
           style.width = s"${x}px"
           style.height = s"${y}px"

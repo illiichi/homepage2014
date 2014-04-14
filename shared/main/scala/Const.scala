@@ -11,6 +11,7 @@ object Const{
     val container = "container"
     val back_canvas = "back-canvas"
     val container_front = "container-front"
+    val background = "background"
 
     val control_panel_container = "control-panel-container"
     val menu_input = "menu-input"

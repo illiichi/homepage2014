@@ -65,5 +65,7 @@ case class Figure(id: String, aspectRatio: Double){
     }
   }
 
+  def css(str: String) = (conv: Screen.Converter) => (id, str)
+
   def hide = (conv: Screen.Converter) => (id, "display:none;")
 }
