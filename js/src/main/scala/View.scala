@@ -34,7 +34,7 @@ class View(){
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
             for(
               (ident, path) <- Const.imageUrls
-            ) yield img(id:=ident, `class` := Classes.figure, src := path)
+            ) yield `object`(id:=ident, `class` := Classes.figure, "data".attr := path)
           )
         ),
         div(

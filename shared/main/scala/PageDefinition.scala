@@ -57,7 +57,7 @@ object IlliIchiPage extends Definition{
       Point(Center.point, 0.5), 0.8, origin = Figure.Center)
 
     val base = Figures.fukusuke.style(
-      Point(Left(0.8), 0.9), 0.2, origin = Figure.RightBottom)
+      Point(Right(0.8), 0.9), 0.2, origin = Figure.RightBottom)
   }
   val illegalStyles = base :+ Background.illegal :+ Fukusuke.apology
 
