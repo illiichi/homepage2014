@@ -9,14 +9,14 @@ object StyleTest extends TestSuite{
     val fig = Figure("hoge", 0.5)
 
     "none" -{
-      val style = fig.style(None)(conv)
+      val (id, style) = fig.hide(conv)
       assert(style == "display:none;")
     }
 
-    val l  = Some((Point(Center.point, 0.5), Center(0.8)))
-    val l2 = Some((Point(Center.point, 0.5), Center(0.2)))
+    val l  = Point(Center.point, 0.5)
+
     "left_top" -{
-      val style = fig.style(l)(conv)
+      val (id, style) = fig.style(l, Center(0.8))(conv)
       assert(
         style.contains("width:300px;"),
         style.contains("height:150px;"),
@@ -26,7 +26,7 @@ object StyleTest extends TestSuite{
     }
 
     "center" -{
-      val style = fig.style(l, origin = Figure.Center)(conv)
+      val (id, style) = fig.style(l, Center(0.8), origin = Figure.Center)(conv)
       assert(
         style.contains("width:600px;"),
         style.contains("height:300px;"),
@@ -35,7 +35,7 @@ object StyleTest extends TestSuite{
       )
     }
     "center2" -{
-      val style = fig.style(l2, origin = Figure.Center)(conv)
+      val (id, style) = fig.style(l, Center(0.2), origin = Figure.Center)(conv)
       assert(
         style.contains("width:600px;"),
         style.contains("height:300px;"),
@@ -44,7 +44,7 @@ object StyleTest extends TestSuite{
       )
     }
     "right" -{
-      val style = fig.style(l2, origin = Figure.RightBottom)(conv)
+      val (id, style) = fig.style(l, Center(0.2), origin = Figure.RightBottom)(conv)
       assert(
         style.contains("width:300px;"),
         style.contains("height:150px;"),

@@ -12,13 +12,12 @@ case class   OpenPage(url: String)  extends Action
 case class   ShowSlide(url: String) extends Action
 
 trait Definition{
-  type Style = (String, String)
   def menu: Seq[(String, (Effect, Action))]
   lazy val parser = new InputParser(menu)
-  def styles(effect: Effect, count: Option[Int]): Map[String, String]
+  def styles(effect: Effect, count: Option[Int]): Seq[Style]
   def doIt(action: Action): Unit
-  def defaultStyles: Map[String, String]
-  def illegalStyles: Map[String, String]
+  def defaultStyles: Seq[Style]
+  def illegalStyles: Seq[Style]
 }
 
 object IlliIchiPage extends Definition{
@@ -33,11 +32,17 @@ object IlliIchiPage extends Definition{
     ("slide of clojurescript"       , (RollingFukusuke(13) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
     )
 
-  val defaultStyles = Map("fukusuke" -> "display:none")
-  val illegalStyles = Map("fukusuke_glass" -> "display:none")
+  object Figures{
+    import definition.Const.Ids
+    val fukusuke = Figure(Ids.fukusuke, 1.0)
+  }
+  import model.Screen._
+  val defaultStyles = Seq(Figures.fukusuke.style(Point(Left.edge, 0.0), Center(0.2)))
+  val illegalStyles = Seq()
 
-  def styles(effect: Effect, count: Option[Int]) = Map("fukusuke_peko" -> "display:none")
+  def styles(effect: Effect, count: Option[Int]) = Seq()
   def doIt(action: Action){}
+
 
 /*
 <iframe src="http://www.slideshare.net/slideshow/embed_code/14441333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/scala-14441333" title="Scalaノススメ" target="_blank">Scalaノススメ</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>

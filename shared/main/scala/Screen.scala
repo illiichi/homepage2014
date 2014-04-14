@@ -19,6 +19,8 @@ object Screen{
   val ratio = 1.0
 
   class Converter(width: Int, height: Int) {
+    def this(t: (Int, Int)) = this(t._1, t._2)
+
     val (cw, ch) = {
       if(width < height) (width.toDouble, width * ratio)
       else               (height / ratio, height.toDouble)

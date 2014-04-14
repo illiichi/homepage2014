@@ -21,6 +21,11 @@ object Const{
     val control_panel_container = "control-panel-container"
   }
 
+  val objects = {
+    import Ids._
+    Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2)
+  }
+
   val imageUrls = Seq(
     (Ids.fukusuke, "images/fukusuke1.svg"),
     (Ids.fukusuke_peko, "images/fukusuke2.svg"),

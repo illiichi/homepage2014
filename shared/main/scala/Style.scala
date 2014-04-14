@@ -32,39 +32,41 @@ case class Figure(id: String, aspectRatio: Double){
   type Location = (VirtualPosition, Horizontal)
 
   def style(
-    location: Option[(VirtualPosition, Horizontal)],
+    location: VirtualPosition, 
+    size: Horizontal,
     scale: Double = 1.0,
     origin: Position = LeftTop,
     additionalStyle:ScreenPosition => String = NoMore
-  )(conv: Screen.Converter) = {
+  ): Style = { (conv: Screen.Converter) =>
     def toStyle(x:Double, y: Double, width: Double, height: Double) =
-      Seq(
+      (id, Seq(
         s"width:${width.toInt}px;height:${height.toInt}px;",
         s"top:${y.toInt}px;left:${x.toInt}px;"
-      ).mkString
+      ).mkString)
 
-    (origin, location) match {
-      case (LeftTop, Some((leftTop, right))) => 
+    (origin, (location, size)) match {
+      case (LeftTop, (leftTop, right)) => 
         val (x1, y1) = conv(leftTop)
         val x2 = conv.horizontal(right)
         val width = x2 - x1
         val height = width * aspectRatio
         toStyle(x1, y1, width, height)
-      case (Center, Some((center, right))) =>
+      case (Center, (center, right)) =>
         val (cx, cy) = conv(center)
         val x2 = conv.horizontal(right)
         val width = Math.abs(x2 - cx) * 2
         val height = width * aspectRatio
         val (x1, y1) = (cx - width / 2, cy - height / 2)
         toStyle(x1, y1, width, height)
-      case (RightBottom, Some((rightBottom, left))) =>
+      case (RightBottom, (rightBottom, left)) =>
         val (x2, y2) = conv(rightBottom)
         val x1 = conv.horizontal(left)
         val width = x2 - x1
         val height = width * aspectRatio
         val y1 = y2 - height
         toStyle(x1, y1, width, height)
-      case (_, None) => "display:none;"
     }
   }
+
+  def hide = (conv: Screen.Converter) => (id, "display:none;")
 }
