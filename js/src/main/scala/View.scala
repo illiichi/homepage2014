@@ -103,7 +103,7 @@ class View(){
 
   def changeAttribute(xs: Seq[(String, String)]){
     xs.foreach { case (id, style) =>
-        g.document.getElementById(id).style = style
+        g.document.getElementById(id).setAttribute("style", style)
     }
   }
 
