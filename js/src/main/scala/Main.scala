@@ -24,10 +24,10 @@ object Main {
     
     (inputState match {
       case NoInput => definition.defaultStyles
-      case DuringInput((effect, _), count) => definition.styles(effect, Some(count))
+      case DuringInput((effect, _), count) => effect(Some(count))
       case Complete((effect, action)) => 
-        definition.doIt(action)
-        definition.styles(effect, None)
+        action()
+        effect(None)
       case WrongInput => definition.illegalStyles
     }).map{ f => val r = f(new Screen.Converter(screenSize)); println(r);r}
   }

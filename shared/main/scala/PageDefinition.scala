@@ -1,35 +1,26 @@
 package model
 
-sealed trait Effect
-case object Introduction             extends Effect
-case object FallForward              extends Effect
-case object FukusukeGlassOn          extends Effect
-case class RollingFukusuke(max: Int) extends Effect
-
-sealed trait Action
-case object  JustSee                extends Action
-case class   OpenPage(url: String)  extends Action
-case class   ShowSlide(url: String) extends Action
-
 trait Definition{
   def menu: Seq[(String, (Effect, Action))]
   lazy val parser = new InputParser(menu)
-  def styles(effect: Effect, count: Option[Int]): Seq[Style]
-  def doIt(action: Action): Unit
   def defaultStyles: Seq[Style]
   def illegalStyles: Seq[Style]
 }
 
 object IlliIchiPage extends Definition{
-  val menu = Seq(
-    ("about me"                     , (Introduction , JustSee)) ,
-    ("what's illi-ichi"             , (FallForward , JustSee)) ,
-    ("show code (open github page)" , (FukusukeGlassOn , OpenPage("https://github.com/illi-ichi"))) ,
-    ("slide of scala"               , (RollingFukusuke(5) ,  ShowSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
-    ("slide of amber smalltalk"     , (RollingFukusuke(15) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
-    ("slide of elm"                 , (RollingFukusuke(3) ,  ShowSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
-    ("slide of clojurescript"       , (RollingFukusuke(13) , ShowSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
+  val menu = {
+    import Effects._
+    import Actions._
+    Seq(
+    ("about me"                     , (introduction , justSee)) ,
+    ("what's illi-ichi"             , (fallForward , justSee)) ,
+    ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
+    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
+    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
+    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
+    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
     )
+  }
 
   object Figures{
     import definition.Const.Ids
@@ -60,15 +51,6 @@ object IlliIchiPage extends Definition{
       Point(Right(0.8), 0.9), 0.2, origin = Figure.RightBottom)
   }
   val illegalStyles = base :+ Background.illegal :+ Fukusuke.apology
-
-  def styles(effect: Effect, count: Option[Int]) = defaultStyles
-  def doIt(action: Action){
-    action match {
-      case OpenPage(url) => view.View.openUrl(url)
-      case _ => 
-    }
-  }
-
 
 /*
 <iframe src="http://www.slideshare.net/slideshow/embed_code/14441333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/scala-14441333" title="Scalaノススメ" target="_blank">Scalaノススメ</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
