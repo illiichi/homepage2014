@@ -27,10 +27,8 @@ class View(){
   def render(): Unit = {
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
+        `object`("data".attr := "images/buddha01.svg", `class`:="back-buddha"),
         div(id := Ids.container)(
-          div(`class`:= Classes.container_back)(
-            canvas(id:=Ids.back_canvas)
-          ),
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
             for(
               (ident, path) <- Const.imageUrls
@@ -66,21 +64,6 @@ class View(){
       ).toString
   }
 
-  def grid(width:Int, height:Int)  = {
-    val c = g.document.getElementById(Ids.back_canvas)
-    val ctx = (c.asInstanceOf[js.Dynamic]).getContext("2d")
-    val (w, h) = (width / 30, height / 30)
-    ctx.beginPath()
-    ctx.fillStyle = "black"
-    ctx.strokeStyle = "green"
-    ctx.fillRect(0,0,width, height)
-    for(i <- (1 to 30)){
-      ctx.moveTo(w * i, 0); ctx.lineTo(w * i, height)
-      ctx.moveTo(0, h * i); ctx.lineTo(width, h * i)
-    }
-    ctx.stroke()
-  }
-
   def eventHook(menuText: Var[String], screenSize: Var[(Int, Int)]){
     val menuInput = g.document.getElementById(Ids.menu_input)
     menuInput.oninput = { (e:js.Dynamic) => 
@@ -92,12 +75,11 @@ class View(){
       screenSize() = windowSize() 
     }
     screenSize.foreach{ case (x, y) =>
-        Seq(Ids.container, Ids.back_canvas).foreach{ id =>
+        Seq(Ids.container).foreach{ id =>
           val style = g.document.getElementById(id).style
           style.width = s"${x}px"
           style.height = s"${y}px"
         }
-        grid(x, y)
     }
   }
 

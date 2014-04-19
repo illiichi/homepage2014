@@ -27,18 +27,21 @@ class Effects(base: Seq[Style]){
   def introduction: Effect = count => base
   def fallForward(back: Figure, fig: Figure, menu: Figure): Effect = count => {
     val deg = (count.getOrElse(16) / 16.0 * 90).toInt
-    val menuStyle = 
-      if (count.isEmpty) 
-        Some(menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)))
-      else None
+    val styles = 
+      if (count.isEmpty) Seq(
+        menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)),
+        back.css("opacity:0")
+      )
+      else Seq(
+        back.css(s"background:white;transform:perspective(300px) rotateX(${-deg}deg);")
+      )
 
     (base :+ 
-      back.css(s"background:yellow;transform:perspective(300px) rotateX(${-deg}deg);") :+
       fig.style(
         Point(Right(0.8), 0.9), 0.2,
         origin = Figure.RightBottom
       )
-    ) ++ menuStyle
+    ) ++ styles
   }
   def zoom(fig1: Figure, fig2: Figure): Effect = count => {
     val size = count.getOrElse(20)
