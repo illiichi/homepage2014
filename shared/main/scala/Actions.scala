@@ -20,10 +20,19 @@ object Actions{
   def showSlide(url:String) = () => {
   }
 }
+import model.IlliIchiPage._   // fix: wrong dependency
+import model.Screen._
 
 object Effects{
   def introduction: Effect = count => Seq()
   def fallForward: Effect = count => Seq()
-  def fukusukeGlassOn: Effect = count => Seq()
+  def fukusukeGlassOn: Effect = count => {
+    val size = count.getOrElse(20)
+    Seq(Figures.fukusuke.style(
+      Point(Right(0.8), 0.9), 0.2,
+      origin = Figure.RightBottom,
+      additionalStyle = Figure.FallForward(10 * size)
+    ))
+  }
   def rollingFukusuke(max: Int): Effect = count => Seq()
 }
