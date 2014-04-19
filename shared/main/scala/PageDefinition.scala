@@ -8,20 +8,6 @@ trait Definition{
 }
 
 object IlliIchiPage extends Definition{
-  val menu = {
-    import Effects._
-    import Actions._
-    Seq(
-    ("about me"                     , (introduction , justSee)) ,
-    ("what's illi-ichi"             , (fallForward , justSee)) ,
-    ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
-    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
-    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
-    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
-    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
-    )
-  }
-
   object Figures{
     import definition.Const.Ids
     val fukusuke = Figure(Ids.fukusuke, 1.0)
@@ -51,6 +37,25 @@ object IlliIchiPage extends Definition{
       Point(Right(0.8), 0.9), 0.2, origin = Figure.RightBottom)
   }
   val illegalStyles = base :+ Background.illegal :+ Fukusuke.apology
+
+  val effects = new Effects(base)
+  val fukusukeGlassOn = effects.zoom(Figures.fukusuke, Figures.fukusuke_glass)
+  def rollingFukusuke(max: Int) = effects.rolling(9, 9 + max, Figures.fukusuke)
+  val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu)
+  val introduction = effects.introduction
+
+  val menu = {
+    import Actions._
+    Seq(
+    ("about me"                     , (introduction , justSee)) ,
+    ("what's illi-ichi"             , (showAnotherWorld , justSee)) ,
+    ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
+    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
+    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
+    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
+    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
+    )
+  }
 
 /*
 <iframe src="http://www.slideshare.net/slideshow/embed_code/14441333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/scala-14441333" title="Scalaノススメ" target="_blank">Scalaノススメ</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>

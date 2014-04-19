@@ -21,11 +21,13 @@ object Figure{
 
   case class ScreenPosition(p: (Int, Int), size: (Int, Int))
   def NoMore(p: ScreenPosition) = ""
-  def Rotate(deg: Int) = (p: ScreenPosition) => s"transform:rotate(${deg}deg);"
+  def Rotate(deg: Int) = (p: ScreenPosition) => s"transform:rotate(${-deg}deg);"
   def FallForward(deg:Int) = (p: ScreenPosition) => 
     s"transform:perspective(100px) rotateX(${-deg}deg);"
   def Zoom(scale: Double) = (p: ScreenPosition) =>
     s"transform:scale(${scale});transform-origin:${p.size._1}px ${p.size._2}px;"
+  def Scale(scale: Double) = (p: ScreenPosition) =>
+    s"transform:scale(${scale});"
 }
 
 /* 

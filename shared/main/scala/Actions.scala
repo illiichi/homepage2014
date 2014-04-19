@@ -20,19 +20,47 @@ object Actions{
   def showSlide(url:String) = () => {
   }
 }
-import model.IlliIchiPage._   // fix: wrong dependency
+
 import model.Screen._
 
-object Effects{
-  def introduction: Effect = count => Seq()
-  def fallForward: Effect = count => Seq()
-  def fukusukeGlassOn: Effect = count => {
+class Effects(base: Seq[Style]){
+  def introduction: Effect = count => base
+  def fallForward(back: Figure, fig: Figure, menu: Figure): Effect = count => {
+    val deg = (count.getOrElse(16) / 16.0 * 90).toInt
+    val menuStyle = 
+      if (count.isEmpty) 
+        Some(menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)))
+      else None
+
+    (base :+ 
+      back.css(s"background:yellow;transform:perspective(300px) rotateX(${-deg}deg);") :+
+      fig.style(
+        Point(Right(0.8), 0.9), 0.2,
+        origin = Figure.RightBottom
+      )
+    ) ++ menuStyle
+  }
+  def zoom(fig1: Figure, fig2: Figure): Effect = count => {
     val size = count.getOrElse(20)
-    Seq(Figures.fukusuke.style(
+    val fig = if (size < 10) fig1 else fig2
+
+    base :+ fig.style(
       Point(Right(0.8), 0.9), 0.2,
       origin = Figure.RightBottom,
-      additionalStyle = Figure.FallForward(10 * size)
-    ))
+      additionalStyle = Figure.Zoom(1 + 0.3 * size)
+    )
   }
-  def rollingFukusuke(max: Int): Effect = count => Seq()
+  def rolling(half: Int, max: Int, fig: Figure): Effect = count => {
+    val rate = count.map{cnt =>  
+      if (cnt <= half) cnt / half.toDouble * 0.5
+      else (cnt - half) / (max - half).toDouble *0.5 + 0.5
+    }.getOrElse(1.0)
+
+    println(rate)
+    base :+ fig.style(
+      Between(Point(Right(0.8), 0.9), Point(Left(0.4), 0.9), rate), 0.2,
+      origin = Figure.RightBottom,
+      additionalStyle = Figure.Rotate((720 * rate).toInt)
+    )
+  }
 }
