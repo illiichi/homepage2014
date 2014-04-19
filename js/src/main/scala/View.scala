@@ -28,6 +28,7 @@ class View(){
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
         `object`("data".attr := "images/buddha01.svg", `class`:="back-buddha"),
+        `object`("data".attr := "images/lambda-cube.svg", `class`:="back-lambda"),
         div(id := Ids.container)(
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
             for(

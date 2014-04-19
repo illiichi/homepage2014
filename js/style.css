@@ -6,6 +6,7 @@ html {
 
 body {
   margin: 0;
+  background: black;
 }
 
 #container {
@@ -97,4 +98,8 @@ ul {
 
 .back-buddha {
     width: 100%;
+}
+.back-lambda {
+    position: fixed;
+    right: 100px;    
 }
