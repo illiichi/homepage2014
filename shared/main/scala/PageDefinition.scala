@@ -50,7 +50,7 @@ object IlliIchiPage extends Definition{
     import Actions._
     Seq(
     ("about me"                     , (introduction , justSee)) ,
-    ("what's illi-ichi"             , (showAnotherWorld , justSee)) ,
+    ("what's illi-ichi"             , (showAnotherWorld , startLambdaCubeAnimation)) ,
     ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
     ("slide of scala"               , (rollingFukusuke(5) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
     ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,

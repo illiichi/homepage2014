@@ -28,9 +28,7 @@ class View(){
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
         `object`("data".attr := "images/buddha01.svg", `class`:="back-buddha"),
-        div(id := Ids.lambda, `class`:= Classes.figure)(
-        `object`("data".attr := "images/lambda-cube.svg", `class`:="back-lambda")
-        ),
+        div(id := Ids.lambda, `class`:= Classes.figure),
         div(id := Ids.container)(
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
             for(
@@ -102,5 +100,10 @@ class View(){
 object View{
   def openUrl(url: String){
     g.window.open(url, "_blank")
+  }
+
+  def putLambdaCube(){
+    g.document.getElementById(Ids.lambda).innerHTML =
+      `object`("data".attr := "images/lambda-cube.svg").toString
   }
 }

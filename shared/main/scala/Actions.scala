@@ -14,6 +14,9 @@ case class   ShowSlide(url: String) extends Action
 
 object Actions{
   def justSee =  () => {}
+  def startLambdaCubeAnimation = () => {
+    view.View.putLambdaCube()
+  }
   def openPage(url:String) = () => {
     view.View.openUrl(url)
   }
