@@ -17,8 +17,8 @@ object IlliIchiPage extends Definition{
     val fish2 = Figure(Ids.fish2, 0.53)
 
     val lambda = Figure(Ids.lambda, 1.0)
-
-    val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2, lambda)
+    val slide = Figure(Ids.slide, 0.8321678321678322)
+    val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2, lambda, slide)
 
     val menu = Figure(Ids.control_panel_container, 1.13)
     val background = Figure(Ids.container_front, 1.0)
@@ -42,7 +42,7 @@ object IlliIchiPage extends Definition{
 
   val effects = new Effects(base)
   val fukusukeGlassOn = effects.zoom(Figures.fukusuke, Figures.fukusuke_glass)
-  def rollingFukusuke(max: Int) = effects.rolling(9, 9 + max, Figures.fukusuke)
+  def rollingFukusuke(max: Int) = effects.rolling(9, 9 + max, Figures.fukusuke, Figures.slide, Figures.menu)
   val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu, Figures.lambda)
   val introduction = effects.introduction
 
@@ -52,17 +52,10 @@ object IlliIchiPage extends Definition{
     ("about me"                     , (introduction , justSee)) ,
     ("what's illi-ichi"             , (showAnotherWorld , startLambdaCubeAnimation)) ,
     ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
-    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/14441333"))) ,
-    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide("http://www.slideshare.net/slideshow/embed_code/16705652"))) ,
-    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide("http://www.slideshare.net/slideshow/embed_code/23731604"))) ,
-    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide("http://www.slideshare.net/slideshow/embed_code/27494131")))
+    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide(SlideShare.scala))) ,
+    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide(SlideShare.amber))) ,
+    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide(SlideShare.elm))) ,
+    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide(SlideShare.clojurescript)))
     )
   }
-
-/*
-<iframe src="http://www.slideshare.net/slideshow/embed_code/14441333" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/scala-14441333" title="Scalaノススメ" target="_blank">Scalaノススメ</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
-<iframe src="http://www.slideshare.net/slideshow/embed_code/16705652" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/elmfunctional-reactive-programming" title="Elmで始めるFunctional Reactive Programming " target="_blank">Elmで始めるFunctional Reactive Programming </a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
-<iframe src="http://www.slideshare.net/slideshow/embed_code/23731604" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/ambersmalltalk" title="AmberとSmalltalkとオブジェクト指向" target="_blank">AmberとSmalltalkとオブジェクト指向</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
-<iframe src="http://www.slideshare.net/slideshow/embed_code/27494131" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px 1px 0; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/maedaunderscore/clojurescript" title="ClojureScriptという選択肢" target="_blank">ClojureScriptという選択肢</a> </strong> from <strong><a href="http://www.slideshare.net/maedaunderscore" target="_blank">Yasuyuki Maeda</a></strong> </div>
- */
 }

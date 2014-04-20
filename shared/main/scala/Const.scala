@@ -8,6 +8,7 @@ object Const{
     val fish = "fish"
     val fish2 = "fish2"
     val lambda = "lambda"
+    val slide = "slide"
 
     val container = "container"
     val back_canvas = "back-canvas"

@@ -33,7 +33,8 @@ class View(){
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
             for(
               (ident, path) <- Const.imageUrls
-            ) yield `object`(id:=ident, `class` := Classes.figure, "data".attr := path)
+            ) yield `object`(id:=ident, `class` := Classes.figure, "data".attr := path),
+            div(id:=Ids.slide, `class` := Classes.figure)
           )
         ),
         div(
@@ -105,5 +106,14 @@ object View{
   def putLambdaCube(){
     g.document.getElementById(Ids.lambda).innerHTML =
       `object`("data".attr := "images/lambda-cube.svg").toString
+  }
+
+  import model.SlideShare
+  var lastSlide:SlideShare = _
+  def showSlide(slide: SlideShare){
+    if(lastSlide != slide){
+      lastSlide = slide
+      g.document.getElementById(Ids.slide).innerHTML = slide.toHtml
+    }
   }
 }
