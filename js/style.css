@@ -38,9 +38,12 @@ a:hover {
 .figure {
     position: fixed;
 }
+
 .control-panel-container {
     min-width: 320px;
     min-height: 320px;
+    transition-property: width, height, top, left, transform;
+    transition-duration: 1s;
 }
 .back-panel{
     position: absolute;
