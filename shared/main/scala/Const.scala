@@ -7,6 +7,8 @@ object Const{
     val fukusuke_glass = "fukusuke_glass"
     val fish = "fish"
     val fish2 = "fish2"
+    val name = "name"
+
     val lambda = "lambda"
     val slide = "slide"
 
@@ -36,6 +38,7 @@ object Const{
     (Ids.fukusuke_peko, "images/fukusuke2.svg"),
     (Ids.fukusuke_glass, "images/fukusuke3.svg"),
     (Ids.fish, "images/fish.svg"),
-    (Ids.fish2,"images/fish02.svg")
+    (Ids.fish2,"images/fish02.svg"),
+    (Ids.name,"images/name.svg")
   )
 }

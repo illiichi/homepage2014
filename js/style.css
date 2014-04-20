@@ -17,6 +17,7 @@ a {
 a:hover {
   color: #5555FF;
 }
+
 #container {
   width:100%;
   height: 600px;
@@ -42,9 +43,13 @@ a:hover {
 .control-panel-container {
     min-width: 320px;
     min-height: 320px;
+}
+
+.control-panel-container, #name {
     transition-property: width, height, top, left, transform;
     transition-duration: 1s;
 }
+
 .back-panel{
     position: absolute;
     width: 100%;
@@ -103,10 +108,11 @@ ul {
   list-style-type: none;
 }
 
-#background {
-    background: black;
-}
-
 .back-buddha {
     width: 100%;
+}
+
+#lambda > object {
+    width: 100%;
+    height: 100%;
 }

@@ -17,7 +17,24 @@ object Actions{
 import model.Screen._
 
 class Effects(base: Seq[Style]){
-  def introduction: Effect = count => base
+  def introduction(fig1: Figure, fig2: Figure, name: Figure): Effect = count => {
+    val rate = count.getOrElse(8) / 8.0
+    val figStyle = 
+      fig1.style(
+        Between(Point(Right.edge, 0.2), Point(Center(0), 0.65), rate), 0.2,
+        additionalStyle = Figure.Zoom(0.1 / rate + 0.9))
+    val fig2Style =
+      if (rate > 0.3) fig2.style(
+        Between(Point(Right.edge, 1.0), Point(Center(0.8), 0.80), (rate - 0.3) / 0.7), 0.1
+      ) else fig2.hide
+
+    val nameStyle =
+      if (rate > 0.99) name.style(Point(Center(0.2), 0.65), 0.6)
+      else if( rate > 0.8) name.style(Point(Right(0.8), 0.7), 0.6)
+      else name.hide
+
+    base :+ figStyle :+ fig2Style :+ nameStyle
+  }
   def fallForward(back: Figure, fig: Figure, menu: Figure, animation: Figure): Effect = count => {
     val max = 20
     val deg = (count.getOrElse(max) / max.toDouble * 90).toInt
