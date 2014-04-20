@@ -16,7 +16,9 @@ object IlliIchiPage extends Definition{
     val fish = Figure(Ids.fish, 0.5)
     val fish2 = Figure(Ids.fish2, 0.53)
 
-    val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2)
+    val lambda = Figure(Ids.lambda, 1.0)
+
+    val all = Seq(fukusuke, fukusuke_peko, fukusuke_glass, fish, fish2, lambda)
 
     val menu = Figure(Ids.control_panel_container, 1.13)
     val background = Figure(Ids.container_front, 1.0)
@@ -41,7 +43,7 @@ object IlliIchiPage extends Definition{
   val effects = new Effects(base)
   val fukusukeGlassOn = effects.zoom(Figures.fukusuke, Figures.fukusuke_glass)
   def rollingFukusuke(max: Int) = effects.rolling(9, 9 + max, Figures.fukusuke)
-  val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu)
+  val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu, Figures.lambda)
   val introduction = effects.introduction
 
   val menu = {

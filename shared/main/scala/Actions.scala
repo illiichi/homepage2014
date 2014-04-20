@@ -25,12 +25,13 @@ import model.Screen._
 
 class Effects(base: Seq[Style]){
   def introduction: Effect = count => base
-  def fallForward(back: Figure, fig: Figure, menu: Figure): Effect = count => {
+  def fallForward(back: Figure, fig: Figure, menu: Figure, animation: Figure): Effect = count => {
     val deg = (count.getOrElse(16) / 16.0 * 90).toInt
     val styles = 
       if (count.isEmpty) Seq(
         menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)),
-        back.css("opacity:0")
+        back.css("opacity:0"),
+        animation.style(Point(Right(0.8), 0.1), 0.4, origin = Figure.RightTop)
       )
       else Seq(
         back.css(s"background:white;transform:perspective(300px) rotateX(${-deg}deg);")

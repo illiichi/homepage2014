@@ -7,6 +7,7 @@ object Const{
     val fukusuke_glass = "fukusuke_glass"
     val fish = "fish"
     val fish2 = "fish2"
+    val lambda = "lambda"
 
     val container = "container"
     val back_canvas = "back-canvas"

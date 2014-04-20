@@ -19,20 +19,16 @@
   <defs
      id="defs4">
     <linearGradient
-	id="linearGradient5278">
+       id="linearGradient5278">
       <stop
-          style="stop-color:#ffffff;stop-opacity:1;"
-          offset="0"
-          id="stop5280" />
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop5280" />
       <stop
-          id="stop5286"
-          offset="0.79166669"
-          style="stop-color:#ffdf0a;stop-opacity:1;" />
-      <stop
-          style="stop-color:#ffffff;stop-opacity:0;"
-          offset="1"
-          id="stop5282" />
-    </linearGradient>
+         id="stop5286"
+         offset="1"
+         style="stop-color:#ffdf6b;stop-opacity:1;" />
+    </linearGradient>    
     <marker
        inkscape:stockid="Arrow2Mend"
        orient="auto"
@@ -115,7 +111,7 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g 	transform="translate(72,72)">
+  <g 	transform="translate(42,42)">
     <path
 	sodipodi:type="arc"
 	style="fill:url(#radialGradient5284);fill-opacity:1;stroke:none"
@@ -125,7 +121,7 @@
 	sodipodi:rx="127.53701"
 	sodipodi:ry="118.69781"
        d="m 224.7682,90.004112 a 127.53701,118.69781 0 1 1 -255.074024,0 127.53701,118.69781 0 1 1 255.074024,0 z"
-	transform="matrix(1.4257426,0,0,1.4257426,-32.980688,-50.186227)" />
+       transform="matrix(1.0020875,0,0,1.0020875,0.2118041,-12.055521)" />
     <g
 	inkscape:label="Layer 1"
 	inkscape:groupmode="layer"

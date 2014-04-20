@@ -17,6 +17,7 @@ object Figure{
   sealed trait Position
   case object LeftTop extends Position
   case object Center extends Position
+  case object RightTop extends Position
   case object RightBottom extends Position
 
   case class ScreenPosition(p: (Int, Int), size: (Int, Int))
@@ -69,6 +70,10 @@ case class Figure(id: String, aspectRatio: Double){
       case RightBottom =>
         val (x2, y2) = conv(location)
         val (x1, y1) = (x2 - width, y2 - height)
+        toStyle(x1, y1, width, height)
+      case RightTop =>
+        val (x2, y1) = conv(location)
+        val x1 = x2 - width
         toStyle(x1, y1, width, height)
     }
   }
