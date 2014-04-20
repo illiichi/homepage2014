@@ -48,11 +48,11 @@ class View(){
             ),
             input(placeholder:="type one of below", id := "menu-input"),
             ul(
-              li("About me"),
-              li("What's illi-ichi"),
+              li("Who am I"),
+              li("Meaning of illi-ichi"),
               li("Show code (open github page)"),
               li(`class`:="nest-menu")(
-                span("Slide of"),
+                span("About"),
                 ul(
                   li("Scala"),
                   li("Amber Smalltalk"),

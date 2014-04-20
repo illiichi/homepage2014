@@ -19,7 +19,8 @@ import model.Screen._
 class Effects(base: Seq[Style]){
   def introduction: Effect = count => base
   def fallForward(back: Figure, fig: Figure, menu: Figure, animation: Figure): Effect = count => {
-    val deg = (count.getOrElse(16) / 16.0 * 90).toInt
+    val max = 20
+    val deg = (count.getOrElse(max) / max.toDouble * 90).toInt
     val styles = 
       if (count.isEmpty) Seq(
         menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)),

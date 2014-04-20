@@ -42,20 +42,20 @@ object IlliIchiPage extends Definition{
 
   val effects = new Effects(base)
   val fukusukeGlassOn = effects.zoom(Figures.fukusuke, Figures.fukusuke_glass)
-  def rollingFukusuke(max: Int) = effects.rolling(9, 9 + max, Figures.fukusuke, Figures.slide, Figures.menu)
+  def rollingFukusuke(max: Int) = effects.rolling(6, 6 + max, Figures.fukusuke, Figures.slide, Figures.menu)
   val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu, Figures.lambda)
   val introduction = effects.introduction
 
   val menu = {
     import Actions._
     Seq(
-    ("about me"                     , (introduction , justSee)) ,
-    ("what's illi-ichi"             , (showAnotherWorld , startLambdaCubeAnimation)) ,
+    ("who am I"                     , (introduction , justSee)) ,
+    ("meaning of illi-ichi"             , (showAnotherWorld , startLambdaCubeAnimation)) ,
     ("show code (open github page)" , (fukusukeGlassOn , openPage("https://github.com/illi-ichi"))) ,
-    ("slide of scala"               , (rollingFukusuke(5) ,  showSlide(SlideShare.scala))) ,
-    ("slide of amber smalltalk"     , (rollingFukusuke(15) , showSlide(SlideShare.amber))) ,
-    ("slide of elm"                 , (rollingFukusuke(3) ,  showSlide(SlideShare.elm))) ,
-    ("slide of clojurescript"       , (rollingFukusuke(13) , showSlide(SlideShare.clojurescript)))
+    ("about scala"               , (rollingFukusuke(5) ,  showSlide(SlideShare.scala))) ,
+    ("about amber smalltalk"     , (rollingFukusuke(15) , showSlide(SlideShare.amber))) ,
+    ("about elm"                 , (rollingFukusuke(3) ,  showSlide(SlideShare.elm))) ,
+    ("about clojurescript"       , (rollingFukusuke(13) , showSlide(SlideShare.clojurescript)))
     )
   }
 }
