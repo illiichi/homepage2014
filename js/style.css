@@ -44,7 +44,7 @@ body {
 .control-panel {
     position: absolute;
     font-family: "Cutive Mono", monospace;
-    padding: 20px;
+    padding: 5%;
     width: 100%;
 }
 
