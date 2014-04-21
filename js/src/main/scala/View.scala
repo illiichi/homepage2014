@@ -27,7 +27,8 @@ class View(){
   def render(): Unit = {
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
-        `object`("data".attr := "images/buddha01.svg", `class`:="back-buddha"),
+        `object`("data".attr := "images/buddha01.svg",
+                 `class`:="back-buddha", id:=Ids.back_buddha),
         div(id := Ids.lambda, `class`:= Classes.figure),
         div(id := Ids.container)(
           div(`class`:= Classes.container_front, id:=Ids.container_front)(
@@ -77,7 +78,8 @@ class View(){
       screenSize() = windowSize() 
     }
     screenSize.foreach{ case (x, y) =>
-        Seq(Ids.container).foreach{ id =>
+        // big svg need resize by js because of chrome bug
+        Seq(Ids.container, Ids.back_buddha).foreach{ id =>
           val style = g.document.getElementById(id).style
           style.width = s"${x}px"
           style.height = s"${y}px"

@@ -45,8 +45,9 @@ class Effects(base: Seq[Style]){
         animation.style(Point(Right(0.8), 0.1), 0.4, origin = Figure.RightTop)
       )
       else Seq(
-        back.css(s"background:white;transform:perspective(300px) rotateX(${-deg}deg);")
-      )
+        back.css(
+          "background:white;"
+          + Figure.withPrefix(s"transform:perspective(300px) rotateX(${-deg}deg);")))
 
     (base :+ 
       fig.style(

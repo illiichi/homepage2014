@@ -136,12 +136,23 @@ object StyleTest extends TestSuite{
       val fig = Figure("hoge", 0.5)
       val l  = Point(Center.point, 0.5)
       val (id, style) = fig.style(l, 0.3, additionalStyle=Figure.Zoom(2.5))(conv)
-      assert(
-        style.contains("width:300px"),
-        style.contains("height:150px"),
-        style.contains("transform:scale(2.5);"),
-        style.contains("transform-origin:300px 150px")
-      )
+      "scale" -{
+        assert(
+          style.contains("width:300px"),
+          style.contains("height:150px"),
+          style.contains("transform:scale(2.5);"),
+          style.contains("transform-origin:300px 150px")
+        )
+      }
+
+      "vendor_prefix" -{
+        assert(
+          style.contains("transform:scale(2.5);"),
+          style.contains("transform-origin:300px 150px"),
+          style.contains("-webkit-transform:scale(2.5);"),
+          style.contains("-webkit-transform-origin:300px 150px")
+        )
+      }
     }
   }
 }

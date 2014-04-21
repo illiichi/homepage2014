@@ -1,17 +1,5 @@
 package model
 import model.Screen._
-/*
-width
-height
-
-translate
-scale
-rotate
-rotate-origin
-skew
-opacity
-display:none or block
- */ 
 
 object Figure{
   sealed trait Position
@@ -22,13 +10,17 @@ object Figure{
 
   case class ScreenPosition(p: (Int, Int), size: (Int, Int))
   def NoMore(p: ScreenPosition) = ""
-  def Rotate(deg: Int) = (p: ScreenPosition) => s"transform:rotate(${-deg}deg);"
+  def Rotate(deg: Int) = (p: ScreenPosition) => 
+    withPrefix(s"transform:rotate(${-deg}deg);")
   def FallForward(deg:Int) = (p: ScreenPosition) => 
-    s"transform:perspective(100px) rotateX(${-deg}deg);"
+    withPrefix(s"transform:perspective(100px) rotateX(${-deg}deg);")
   def Zoom(scale: Double) = (p: ScreenPosition) =>
-    s"transform:scale(${scale});transform-origin:${p.size._1}px ${p.size._2}px;"
+    withPrefix(s"transform:scale(${scale});", s"transform-origin:${p.size._1}px ${p.size._2}px;")
   def Scale(scale: Double) = (p: ScreenPosition) =>
-    s"transform:scale(${scale});"
+    withPrefix(s"transform:scale(${scale});")
+
+  def withPrefix(styles: String*) =
+    styles.mkString + styles.map("-webkit-"+_).mkString
 }
 
 /* 

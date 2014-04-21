@@ -11,6 +11,7 @@ object Const{
 
     val lambda = "lambda"
     val slide = "slide"
+    val back_buddha = "back-buddha"
 
     val container = "container"
     val back_canvas = "back-canvas"
