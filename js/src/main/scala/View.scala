@@ -17,7 +17,7 @@ class View(){
   val menuText = Var("")
   val screenSize = Var(windowSize())
 
-  def start(styles: Rx[Seq[(String, String)]]){
+  def start(styles: Rx[Map[String, String]]){
     render()
 
     eventHook(menuText, screenSize)
@@ -85,7 +85,7 @@ class View(){
     }
   }
 
-  def changeAttribute(xs: Seq[(String, String)]){
+  def changeAttribute(xs: Map[String, String]){
     xs.foreach { case (id, style) =>
         g.document.getElementById(id).setAttribute("style", style)
     }

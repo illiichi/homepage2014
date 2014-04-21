@@ -19,9 +19,10 @@ object Main {
     view.start(styles)
   }
 
-  def mainFlow(inputState: InputState, screenSize: (Int, Int)):Seq[(String, String)] = {
+  def mainFlow(inputState: InputState, screenSize: (Int, Int)):Map[String, String] = {
     import definition.parser._
-    
+    val converter = new Screen.Converter(screenSize)
+
     (inputState match {
       case NoInput => definition.defaultStyles
       case DuringInput((effect, _), count) => effect(Some(count))
@@ -29,6 +30,6 @@ object Main {
         action()
         effect(None)
       case WrongInput => definition.illegalStyles
-    }).map{ f => val r = f(new Screen.Converter(screenSize)); println(r);r}
+    }).map{ f => f(converter) }.toMap
   }
 }
