@@ -1,4 +1,4 @@
-package model
+package definition
 
 case class SlideShare(
   embedUrl:String,

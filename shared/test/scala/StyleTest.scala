@@ -1,6 +1,6 @@
 import utest._
-import model._
-import model.Screen.{Point, Center}
+import logic._
+import logic.Screen.{Point, Center}
 
 object StyleTest extends TestSuite{
   def tests = TestSuite {

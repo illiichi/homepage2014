@@ -1,5 +1,5 @@
 import utest._
-import model._
+import logic._
 
 object InputStateTest extends TestSuite{
   def tests = TestSuite{

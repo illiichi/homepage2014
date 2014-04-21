@@ -1,13 +1,21 @@
-package model
+package definition
 
-trait Definition{
+import logic._
+
+trait PageDefinition{
   def menu: Seq[(String, (Effect, Action))]
   lazy val parser = new InputParser(menu)
   def defaultStyles: Seq[Style]
   def illegalStyles: Seq[Style]
 }
 
-object IlliIchiPage extends Definition{
+trait ViewAction{
+  def openUrl(url: String): Unit
+  def putLambdaCube():Unit
+  def putSlideSharePage(slideHtml: String):Unit
+}
+
+trait IlliIchiPage extends PageDefinition{ self: ViewAction =>
   object Figures{
     import definition.Const.Ids
     val fukusuke = Figure(Ids.fukusuke, 1.0)
@@ -24,7 +32,7 @@ object IlliIchiPage extends Definition{
     val menu = Figure(Ids.control_panel_container, 1.13)
     val background = Figure(Ids.container_front, 1.0)
   }
-  import model.Screen._
+  import logic.Screen._
   val menuStyle = Figures.menu.style(Point(Center.point, 0.4), 0.4, origin = Figure.Center)
   object Background{
     val default = Figures.background.css("background:white;")
@@ -59,4 +67,23 @@ object IlliIchiPage extends Definition{
     ("about clojurescript"       , (rollingFukusuke(13) , showSlide(SlideShare.clojurescript)))
     )
   }
+
+  object Actions{
+    def justSee =  () => {}
+    def startLambdaCubeAnimation = () => {
+      self.putLambdaCube()
+    }
+    def openPage(url:String) = () => {
+      self.openUrl(url)
+    }
+
+    var lastSlide:SlideShare = _
+    def showSlide(slide: SlideShare) = () => {
+      if(lastSlide != slide){
+        lastSlide = slide
+        self.putSlideSharePage(slide.toHtml)
+      }
+    }
+  }
+
 }

@@ -100,7 +100,7 @@ class View(){
   }
 }
 
-object View{
+trait BrowserViewAction extends definition.ViewAction{
   def openUrl(url: String){
     g.window.open(url, "_blank")
   }
@@ -110,12 +110,7 @@ object View{
       `object`("data".attr := "images/lambda-cube.svg").toString
   }
 
-  import model.SlideShare
-  var lastSlide:SlideShare = _
-  def showSlide(slide: SlideShare){
-    if(lastSlide != slide){
-      lastSlide = slide
-      g.document.getElementById(Ids.slide).innerHTML = slide.toHtml
-    }
+  def putSlideSharePage(slideHtml: String){
+    g.document.getElementById(Ids.slide).innerHTML = slideHtml
   }
 }

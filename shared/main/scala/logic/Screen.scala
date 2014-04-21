@@ -1,4 +1,4 @@
-package model
+package logic
 
 object Screen{
   sealed trait Horizontal

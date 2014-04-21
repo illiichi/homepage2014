@@ -1,5 +1,5 @@
 import utest._
-import model.Screen._
+import logic.Screen._
 
 object ScreenTest extends TestSuite{
   def tests = TestSuite {

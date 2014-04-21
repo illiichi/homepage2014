@@ -1,4 +1,4 @@
-package model
+package logic
 
 class InputParser[State](rawMap: Seq[(String, State)]){
   val map = rawMap.map{case (key, value) => (key.toUpperCase, value)}
