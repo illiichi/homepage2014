@@ -39,8 +39,8 @@ case class Figure(id: String, aspectRatio: Double){
     origin: Position = LeftTop,
     additionalStyle:ScreenPosition => String = NoMore
   ): Style = { (conv: Screen.Converter) =>
-    def p[A](f: =>A) = {val a = f; println(a); a}
-    def toStyle(x:Double, y: Double, width: Double, height: Double) = p{
+
+    def toStyle(x:Double, y: Double, width: Double, height: Double) = {
       val p = ScreenPosition((y.toInt, x.toInt), (width.toInt, height.toInt))
       (id, Seq(
         s"width:${width.toInt}px;height:${height.toInt}px;",
