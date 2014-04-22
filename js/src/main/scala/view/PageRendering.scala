@@ -48,20 +48,7 @@ class PageRendering(){
               img(`class` := "kanji", src:="images/illi-ichi_kanji.svg")
             ),
             input(placeholder:="type one of below", id := "menu-input"),
-            ul(
-              li("Who am I"),
-              li("Meaning of illi-ichi"),
-              li("Show code (open github page)"),
-              li(`class`:="nest-menu")(
-                span("About"),
-                ul(
-                  li("Scala"),
-                  li("Amber Smalltalk"),
-                  li("Elm"),
-                  li("ClojureScript")
-                )
-              )
-            )
+            img(`class` := "menu", src:= "images/menu.svg")
           )
         )
       ).toString
