@@ -42,4 +42,6 @@ object Const{
     (Ids.fish2,"images/fish02.svg"),
     (Ids.name,"images/name.svg")
   )
+
+  val githubPage = "https://github.com/illi-ichi/homepage2014"
 }
