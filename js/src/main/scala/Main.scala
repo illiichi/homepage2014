@@ -10,7 +10,7 @@ object Main {
 
   @JSExport
   def main(): Unit = {
-    val view = new _root_.view.View()
+    val view = new _root_.view.PageRendering()
 
     val inputState = view.menuText.map(page.parser.parse)
 

@@ -13,34 +13,34 @@ import definition.Const
 import definition.Const.Ids
 import definition.Const.Classes
 
-class View(){
+class PageRendering(){
   val menuText = Var("")
   val screenSize = Var(windowSize())
 
   def start(styles: Rx[Map[String, String]]){
-    render()
+    render(styles)
 
     eventHook(menuText, screenSize)
-    styles.foreach(changeAttribute)
   }
 
-  def render(): Unit = {
+  def render(styles: Rx[Map[String, String]]): Unit = {
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
         `object`("data".attr := "images/buddha01.svg",
                  `class`:="back-buddha", id:=Ids.back_buddha),
-        div(id := Ids.lambda, `class`:= Classes.figure),
+        div(styles.attr(Ids.lambda)),
         div(id := Ids.container)(
-          div(`class`:= Classes.container_front, id:=Ids.container_front)(
+          div(styles.attr(Ids.container_front, Classes.container_front))(
             for(
               (ident, path) <- Const.imageUrls
-            ) yield `object`(id:=ident, `class` := Classes.figure, "data".attr := path),
-            div(id:=Ids.slide, `class` := Classes.figure)
+            ) yield `object`(styles.attr(ident), "data".attr := path),
+            div(styles.attr(Ids.slide))
           )
         ),
         div(
-          `class` := s"${Classes.figure} ${Classes.control_panel_container}",
-          id:= Ids.control_panel_container)(
+          styles.attr(Ids.control_panel_container, 
+            s"${Classes.figure} ${Classes.control_panel_container}")
+          )(
           div(`class` := "back-panel"),
           div(`class` := "control-panel")(
             div(`class` := "header")(
@@ -84,12 +84,6 @@ class View(){
           style.width = s"${x}px"
           style.height = s"${y}px"
         }
-    }
-  }
-
-  def changeAttribute(xs: Map[String, String]){
-    xs.foreach { case (id, style) =>
-        g.document.getElementById(id).setAttribute("style", style)
     }
   }
 
