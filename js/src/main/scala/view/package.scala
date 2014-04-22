@@ -8,7 +8,7 @@ import definition.Const.Classes
 
 package object view{
   implicit class ReactiveStyle(styles: Rx[Map[String, String]]){
-    def attr(elementId: String, klass: String = Classes.figure) = {
+    def attrRx(elementId: String, klass: String = Classes.figure) = {
       Obs(styles, skipInitial = true){
         val el = g.document.getElementById(elementId)
         val elementStyle=styles().get(elementId).getOrElse("display:none")

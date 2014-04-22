@@ -28,17 +28,17 @@ class PageRendering(){
       div(id:=Ids.background)(
         `object`("data".attr := "images/buddha01.svg",
                  `class`:="back-buddha", id:=Ids.back_buddha),
-        div(styles.attr(Ids.lambda)),
+        div(styles.attrRx(Ids.lambda)),
         div(id := Ids.container)(
-          div(styles.attr(Ids.container_front, Classes.container_front))(
+          div(styles.attrRx(Ids.container_front, Classes.container_front))(
             for(
               (ident, path) <- Const.imageUrls
-            ) yield `object`(styles.attr(ident), "data".attr := path),
-            div(styles.attr(Ids.slide))
+            ) yield `object`(styles.attrRx(ident), "data".attr := path),
+            div(styles.attrRx(Ids.slide))
           )
         ),
         div(
-          styles.attr(Ids.control_panel_container, 
+          styles.attrRx(Ids.control_panel_container, 
             s"${Classes.figure} ${Classes.control_panel_container}")
           )(
           div(`class` := "back-panel"),

@@ -22,7 +22,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("width:200px")
         val styles = Rx{Map("hoge" -> v())}
 
-        g.document.body.innerHTML = div(styles.attr("hoge")).toString
+        g.document.body.innerHTML = div(styles.attrRx("hoge")).toString
 
         val el = g.document.getElementById("hoge")
         assert(el.getAttribute("style").toString == "width:200px")
@@ -33,7 +33,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("width:200px")
         val styles = Rx{Map("hoge" -> v())}
 
-        g.document.body.innerHTML = div(styles.attr("hoge")).toString
+        g.document.body.innerHTML = div(styles.attrRx("hoge")).toString
 
         v() = "width:100px"
         val el = g.document.getElementById("hoge")
@@ -45,7 +45,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("hoge")
         val styles = Rx{Map(v() -> "width:100px")}
 
-        g.document.body.innerHTML = div(styles.attr("fuga")).toString
+        g.document.body.innerHTML = div(styles.attrRx("fuga")).toString
 
         val el = g.document.getElementById("fuga")
         assert(el.getAttribute("style").toString == "display:none")
@@ -60,7 +60,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("width:200px")
         val styles = Rx{Map("hoge" -> v())}
 
-        g.document.body.innerHTML = div(styles.attr("hoge"), "data".attr:="other").toString
+        g.document.body.innerHTML = div(styles.attrRx("hoge"), "data".attr:="other").toString
 
         val el = g.document.getElementById("hoge")
         assert(el.getAttribute("style").toString == "width:200px")
@@ -72,7 +72,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("width:200px")
         val styles = Rx{Map("hoge" -> v())}
 
-        g.document.body.innerHTML = div(styles.attr("hoge"), `class`:="other").toString
+        g.document.body.innerHTML = div(styles.attrRx("hoge"), `class`:="other").toString
 
         val el = g.document.getElementById("hoge")
         assert(el.getAttribute("style").toString == "width:200px")
@@ -83,7 +83,7 @@ object ReactiveStyleTest extends TestSuite{
         val v = Var("width:200px")
         val styles = Rx{Map("hoge" -> v())}
 
-        g.document.body.innerHTML = div(styles.attr("hoge", "other")).toString
+        g.document.body.innerHTML = div(styles.attrRx("hoge", "other")).toString
 
         val el = g.document.getElementById("hoge")
         assert(el.getAttribute("style").toString == "width:200px")
