@@ -17,7 +17,7 @@ class Effects(base: Seq[Style]){
 
     val nameStyle =
       if (rate > 0.99) name.style(Point(Center(0.2), 0.65), 0.6)
-      else if( rate > 0.8) name.style(Point(Right(0.8), 0.7), 0.6)
+      else if( rate > 0.8) name.style(Point(Left(0.2), 0.0), 0.6, origin=Figure.RightBottom)
       else name.hide
 
     base :+ figStyle :+ fig2Style :+ nameStyle
