@@ -2,6 +2,8 @@ import scala.scalajs.js
 import js.annotation.JSExport
 import rx._
 import rx.ops._
+import view.PageRendering
+import logic.Screen
 
 @JSExport
 object Main {
@@ -10,15 +12,14 @@ object Main {
 
   @JSExport
   def main(): Unit = {
-    val view = new _root_.view.PageRendering()
+    val view = new PageRendering()
 
     val inputState = view.menuText.map(page.parser.parse)
 
     inputState.foreach( { 
       case Complete((_, action)) => action()
       case _ =>
-    }
-    , skipInitial = true)
+    }, skipInitial = true)
 
     val styles = Rx { toStyleAttribute(inputState(), view.screenSize()) }
 
@@ -26,7 +27,7 @@ object Main {
   }
 
   def toStyleAttribute(inputState: InputState, screenSize: (Int, Int)):Map[String, String] = {
-    val converter = new logic.Screen.Converter(screenSize)
+    val converter = new Screen.Converter(screenSize)
 
     (inputState match {
       case NoInput => page.defaultStyles
