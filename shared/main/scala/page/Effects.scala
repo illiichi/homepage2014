@@ -8,11 +8,11 @@ class Effects(base: Seq[Style]){
     val rate = count.getOrElse(8) / 8.0
     val figStyle = 
       fig1.style(
-        Between(Right.p(0, 0.2), Center.p(0, 0.65), rate), 0.2,
+        Between(Right.p(1.0, 0.2), Center.p(0, 0.65), rate), 0.2,
         additionalStyle = Figure.Zoom(0.1 / rate + 0.9))
     val fig2Style =
       if (rate > 0.3) fig2.style(
-        Between(Right.p(0, 1.0), Center.p(0.8, 0.80), (rate - 0.3) / 0.7), 0.1
+        Between(Right.p(1.0, 1.0), Center.p(0.8, 0.80), (rate - 0.3) / 0.7), 0.1
       ) else fig2.hide
 
     val nameStyle =
