@@ -9,8 +9,23 @@ case class SlideShare(
 }
 
 object SlideShare{
-  val scala = SlideShare("http://www.slideshare.net/slideshow/embed_code/14441333","https://www.slideshare.net/maedaunderscore/scala-14441333", "Scalaノススメ")
-  val elm = SlideShare("http://www.slideshare.net/slideshow/embed_code/16705652","https://www.slideshare.net/maedaunderscore/elmfunctional-reactive-programming", "Elmで始めるFunctional Reactive Programming ")
-  val amber = SlideShare("http://www.slideshare.net/slideshow/embed_code/23731604","https://www.slideshare.net/maedaunderscore/ambersmalltalk", "AmberとSmalltalkとオブジェクト指向")
-  val clojurescript = SlideShare("http://www.slideshare.net/slideshow/embed_code/27494131","https://www.slideshare.net/maedaunderscore/clojurescript", "ClojureScriptという選択肢")
+  val scala = SlideShare(
+    "http://www.slideshare.net/slideshow/embed_code/14441333",
+    "https://www.slideshare.net/maedaunderscore/scala-14441333", 
+    "Scalaノススメ")
+
+  val elm = SlideShare(
+    "http://www.slideshare.net/slideshow/embed_code/16705652",
+    "https://www.slideshare.net/maedaunderscore/elmfunctional-reactive-programming",
+    "Elmで始めるFunctional Reactive Programming ")
+
+  val amber = SlideShare(
+    "http://www.slideshare.net/slideshow/embed_code/23731604",
+    "https://www.slideshare.net/maedaunderscore/ambersmalltalk",
+    "AmberとSmalltalkとオブジェクト指向")
+
+  val clojurescript = SlideShare(
+    "http://www.slideshare.net/slideshow/embed_code/27494131",
+    "https://www.slideshare.net/maedaunderscore/clojurescript",
+    "ClojureScriptという選択肢")
 }

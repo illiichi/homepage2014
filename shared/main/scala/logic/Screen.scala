@@ -5,9 +5,9 @@ object Screen{
   case class Left(r: Double) extends Horizontal
   case class Center(r: Double) extends Horizontal
   case class Right(r: Double) extends Horizontal
-  object Left{ def edge = Left(0.0) }
-  object Center{ def point = Center(0.5) }
-  object Right{ def edge = Right(1.0) }
+  object Left{ def p(x:Double, y:Double) = Point(Left(x), y) }
+  object Center{ def p(x:Double, y:Double) = Point(Center(x), y) }
+  object Right{ def p(x:Double, y:Double) = Point(Right(x), y) }
 
   sealed trait VirtualPosition
   // 0 <= x, y <= 1

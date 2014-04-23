@@ -20,13 +20,13 @@ trait IlliIchiPage extends PageDefinition with Layout{ self: ViewAction =>
   val menu = {
     import Actions._
     Seq(
-    ("who am I"                     , (introduction , justSee)) ,
-    ("meaning of illi-ichi"             , (showAnotherWorld , startLambdaCubeAnimation)) ,
-    ("show code (open github page)" , (fukusukeGlassOn , openPage(Const.githubPage))) ,
-    ("about scala"               , (rollingFukusuke(5) ,  showSlide(SlideShare.scala))) ,
-    ("about amber smalltalk"     , (rollingFukusuke(15) , showSlide(SlideShare.amber))) ,
-    ("about elm"                 , (rollingFukusuke(3) ,  showSlide(SlideShare.elm))) ,
-    ("about clojurescript"       , (rollingFukusuke(13) , showSlide(SlideShare.clojurescript)))
+    ("who am I"                    , (introduction       , justSee))                     ,
+    ("meaning of illi-ichi"        , (showAnotherWorld   , startLambdaCubeAnimation))    ,
+    ("show code (open github page)", (fukusukeGlassOn    , openPage(Const.githubPage)))  ,
+    ("about scala"                 , (rollingFukusuke(5) , showSlide(SlideShare.scala))) ,
+    ("about amber smalltalk"       , (rollingFukusuke(15), showSlide(SlideShare.amber))) ,
+    ("about elm"                   , (rollingFukusuke(3) , showSlide(SlideShare.elm)))   ,
+    ("about clojurescript"         , (rollingFukusuke(13), showSlide(SlideShare.clojurescript)))
     )
   }
 

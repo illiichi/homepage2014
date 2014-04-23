@@ -8,16 +8,16 @@ class Effects(base: Seq[Style]){
     val rate = count.getOrElse(8) / 8.0
     val figStyle = 
       fig1.style(
-        Between(Point(Right.edge, 0.2), Point(Center(0), 0.65), rate), 0.2,
+        Between(Right.p(0, 0.2), Center.p(0, 0.65), rate), 0.2,
         additionalStyle = Figure.Zoom(0.1 / rate + 0.9))
     val fig2Style =
       if (rate > 0.3) fig2.style(
-        Between(Point(Right.edge, 1.0), Point(Center(0.8), 0.80), (rate - 0.3) / 0.7), 0.1
+        Between(Right.p(0, 1.0), Center.p(0.8, 0.80), (rate - 0.3) / 0.7), 0.1
       ) else fig2.hide
 
     val nameStyle =
-      if (rate > 0.99) name.style(Point(Center(0.2), 0.65), 0.6)
-      else if( rate > 0.8) name.style(Point(Left(0.2), 0.0), 0.6, origin=Figure.RightBottom)
+      if (rate > 0.99) name.style(Center.p(0.2, 0.65), 0.6)
+      else if( rate > 0.8) name.style(Left.p(0.2, 0.0), 0.6, origin=Figure.RightBottom)
       else name.hide
 
     base :+ figStyle :+ fig2Style :+ nameStyle
@@ -27,9 +27,9 @@ class Effects(base: Seq[Style]){
     val deg = (count.getOrElse(max) / max.toDouble * 90).toInt
     val styles = 
       if (count.isEmpty) Seq(
-        menu.style(Point(Left(0.2), 0.1), 0.4, additionalStyle = Figure.Scale(0.7)),
+        menu.style(Left.p(0.2, 0.1), 0.4, additionalStyle = Figure.Scale(0.7)),
         back.css("opacity:0"),
-        animation.style(Point(Right(0.8), 0.1), 0.4, origin = Figure.RightTop)
+        animation.style(Right.p(0.8, 0.1), 0.4, origin = Figure.RightTop)
       )
       else Seq(
         back.css(
@@ -38,7 +38,7 @@ class Effects(base: Seq[Style]){
 
     (base :+ 
       fig.style(
-        Point(Right(0.8), 0.9), 0.2,
+        Right.p(0.8, 0.9), 0.2,
         origin = Figure.RightBottom
       )
     ) ++ styles
@@ -48,7 +48,7 @@ class Effects(base: Seq[Style]){
     val fig = if (size < 10) fig1 else fig2
 
     base :+ fig.style(
-      Point(Right(0.8), 0.9), 0.2,
+      Right.p(0.8, 0.9), 0.2,
       origin = Figure.RightBottom,
       additionalStyle = Figure.Zoom(1 + 0.3 * size)
     )
@@ -61,13 +61,13 @@ class Effects(base: Seq[Style]){
 
     val otherStyles = 
       if (count.isEmpty) Seq(
-        slide.style(Point(Right(0.9), 0.1), 0.8, origin = Figure.RightTop),
-        menu.style(Point(Left(0.2), 0.1), 0.2)
+        slide.style(Center.p(0.35, 0.1), 0.7, origin = Figure.LeftTop),
+        menu.style(Center.p(0.35, 0.1), 0.35, origin = Figure.RightTop)
       )
       else Seq()
 
     (base :+ fig.style(
-      Between(Point(Right(0.8), 0.9), Point(Left(0.4), 0.9), rate), 0.2,
+      Between(Right.p(0.8, 0.9), Left.p(0.4, 0.9), rate), 0.2,
       origin = Figure.RightBottom,
       additionalStyle = Figure.Rotate((720 * rate).toInt)
     )) ++ otherStyles

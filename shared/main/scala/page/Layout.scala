@@ -21,18 +21,18 @@ trait Layout{
   }
 
   import logic.Screen._
-  val menuStyle = Figures.menu.style(Point(Center.point, 0.4), 0.4, origin = Figure.Center)
+  val menuStyle = Figures.menu.style(Center.p(0.5, 0.4), 0.4, origin = Figure.Center)
   object Background{
     val default = Figures.background.css("background:white;")
     val illegal = Figures.background.css("background:red;")
   }
-  val base = Figures.all.map(_.hide) :+ menuStyle :+ Background.default
+  val base = Seq(menuStyle, Background.default)
   object Fukusuke {
     val apology = Figures.fukusuke_peko.style(
-      Point(Center.point, 0.5), 0.8, origin = Figure.Center)
+      Center.p(0.5, 0.5), 0.8, origin = Figure.Center)
 
     val base = Figures.fukusuke.style(
-      Point(Right(0.8), 0.9), 0.2, origin = Figure.RightBottom)
+      Right.p(0.8, 0.9), 0.2, origin = Figure.RightBottom)
   }
 
   val effects = new Effects(base)
