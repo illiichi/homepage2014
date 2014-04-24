@@ -12,6 +12,7 @@ import rx.ops._
 import definition.Const
 import definition.Const.Ids
 import definition.Const.Classes
+import util.UserAgent
 
 class PageRendering(){
   val menuText = Var("")
@@ -48,7 +49,8 @@ class PageRendering(){
               img(`class` := "kanji", src:="images/illi-ichi_kanji.svg")
             ),
             input(placeholder:="type one of below", id := "menu-input"),
-            img(`class` := "menu", src:= "images/menu.svg")
+            img(`class` := "menu", src:= "images/menu.svg"),
+            UserAgent.ifSmartPhone(div("* this page is only for PC *"))
           )
         )
       ).toString
