@@ -17,14 +17,16 @@ import util.UserAgent
 class PageRendering(){
   val menuText = Var("")
   val screenSize = Var(windowSize())
+  type ElementId = String
+  type CSS = String
 
-  def start(styles: Rx[Map[String, String]]){
+  def start(styles: Rx[Map[ElementId, CSS]]){
     render(styles)
 
     eventHook(menuText, screenSize)
   }
 
-  def render(styles: Rx[Map[String, String]]): Unit = {
+  def render(styles: Rx[Map[ElementId, CSS]]){
     g.document.body.innerHTML = 
       div(id:=Ids.background)(
         `object`("data".attr := "images/buddha01.svg",
@@ -48,7 +50,7 @@ class PageRendering(){
               img(`class` := "logo",  src:="images/illi-ichi_logo.svg"),
               img(`class` := "kanji", src:="images/illi-ichi_kanji.svg")
             ),
-            input(placeholder:="type one of below", id := "menu-input"),
+            input(placeholder:="type one of below", id := Ids.menu_input),
             img(`class` := "menu", src:= "images/menu.svg"),
             UserAgent.ifSmartPhone(div("* this page is only for PC *"))
           )

@@ -14,7 +14,6 @@ object Const{
     val back_buddha = "back-buddha"
 
     val container = "container"
-    val back_canvas = "back-canvas"
     val container_front = "container-front"
     val background = "background"
 
