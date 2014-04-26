@@ -19,6 +19,7 @@ object Const{
 
     val control_panel_container = "control-panel-container"
     val menu_input = "menu-input"
+    val tooltip = "tooltip"
   }
 
   object Classes{

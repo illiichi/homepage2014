@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="145.62643"
+   height="103.32302"
+   viewBox="0 0 145.62643 103.32302"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="tooltip.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3768">
+      <stop
+         style="stop-color:#ffff00;stop-opacity:1;"
+         offset="0"
+         id="stop3770" />
+      <stop
+         id="stop3776"
+         offset="0.89583331"
+         style="stop-color:#ffff00;stop-opacity:1;" />
+      <stop
+         style="stop-color:#ffe000;stop-opacity:1;"
+         offset="1"
+         id="stop3772" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="2.1395625"
+     inkscape:cy="76.952296"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1436"
+     inkscape:window-height="856"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-67.673672,-355.01578)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 210.8001,406.67729 c 0,27.15115 -30.48201,49.16151 -68.08349,49.16151 -16.51929,0 -31.66448,-4.24816 -43.454583,-11.31405 -11.575932,6.19228 -26.627024,7.05804 -29.08836,5.00416 7.179019,-6.07134 12.329235,-10.41372 14.956675,-15.92405 -5.88486,-7.27261 -10.497216,-17.89674 -10.497216,-26.92757 0,-27.15115 30.482014,-49.16151 68.083484,-49.16151 37.60148,0 68.08349,22.01036 68.08349,49.16151 z"
+       id="path2997"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sscccsss" />
+    <g
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="text2985">
+      <path
+         d="m 102.08048,394.07687 17.20703,0 0,5.52735 -5.52734,0 0,21.71875 -6.34766,0 0,-21.71875 -5.33203,0 0,-5.52735"
+         style="font-family:Abadi MT Condensed Extra Bold;-inkscape-font-specification:Abadi MT Condensed Extra Bold"
+         id="path3914" />
+      <path
+         d="m 120.71329,394.07687 7.16797,0 2.32422,8.63282 2.28516,-8.63282 7.26562,0 -6.42578,14.76563 0,12.48047 -6.36719,0 0,-12.48047 -6.25,-14.76563"
+         style="font-family:Abadi MT Condensed Extra Bold;-inkscape-font-specification:Abadi MT Condensed Extra Bold"
+         id="path3916" />
+      <path
+         d="m 141.98283,394.07687 9.70703,0 c 2.513,3e-5 4.45962,0.67711 5.83984,2.03125 1.38019,1.34117 2.07029,3.24872 2.07031,5.72266 -2e-5,1.28908 -0.22788,2.58465 -0.68359,3.88672 -0.45575,1.28908 -1.41929,2.41538 -2.89063,3.37891 -1.45834,0.95053 -3.29428,1.42579 -5.50781,1.42578 l -2.14844,0 0,10.80078 -6.38671,0 0,-27.2461 m 6.38671,5.25391 0,5.83984 1.40625,0 c 1.04166,2e-5 1.86848,-0.26691 2.48047,-0.80078 0.62499,-0.54685 0.93749,-1.30857 0.9375,-2.28515 -1e-5,-0.92446 -0.24089,-1.61457 -0.72265,-2.07032 -0.46876,-0.4557 -1.1784,-0.68357 -2.12891,-0.68359 l -1.97266,0"
+         style="font-family:Abadi MT Condensed Extra Bold;-inkscape-font-specification:Abadi MT Condensed Extra Bold"
+         id="path3918" />
+      <path
+         d="m 162.2172,394.07687 15.52734,0 0,5.48829 -9.17968,0 0,5 8.55468,0 0,5.33203 -8.55468,0 0,5.85937 9.17968,0 0,5.56641 -15.52734,0 0,-27.2461"
+         style="font-family:Abadi MT Condensed Extra Bold;-inkscape-font-specification:Abadi MT Condensed Extra Bold"
+         id="path3920" />
+      <path
+         d="m 188.05704,394.07687 -0.82031,18.96485 -4.88281,0 -0.85938,-18.96485 6.5625,0 m -3.35937,21.05469 c 1.01562,1e-5 1.84244,0.32553 2.48047,0.97656 0.63801,0.65105 0.95702,1.42579 0.95703,2.32422 -10e-6,0.92448 -0.32553,1.71224 -0.97656,2.36328 -0.63803,0.63802 -1.40626,0.95703 -2.30469,0.95704 -0.91146,-10e-6 -1.69271,-0.31902 -2.34375,-0.95704 -0.63802,-0.65104 -0.95703,-1.43229 -0.95703,-2.34375 0,-0.93749 0.33203,-1.72525 0.99609,-2.36328 0.66406,-0.63801 1.38021,-0.95702 2.14844,-0.95703"
+         style="font-family:Abadi MT Condensed Extra Bold;-inkscape-font-specification:Abadi MT Condensed Extra Bold"
+         id="path3922" />
+    </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot2989"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+         id="flowRegion2991"><rect
+           id="rect2993"
+           width="397.14285"
+           height="294.28571"
+           x="5.7142859"
+           y="286.64789" /></flowRegion><flowPara
+         id="flowPara2995" /></flowRoot>  </g>
+</svg>

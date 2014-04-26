@@ -11,6 +11,7 @@ trait Layout{
     val fish = Figure(Ids.fish, 0.5)
     val fish2 = Figure(Ids.fish2, 0.53)
     val name = Figure(Ids.name, 0.2975778546712803)
+    val tooltip = Figure(Ids.tooltip, 0.7)
 
     val lambda = Figure(Ids.lambda, 1.0)
     val slide = Figure(Ids.slide, 0.8321678321678322)
@@ -22,6 +23,8 @@ trait Layout{
 
   import logic.Screen._
   val menuStyle = Figures.menu.style(Center.p(0.5, 0.4), 0.4, origin = Figure.Center)
+  val tooltip = Figures.tooltip.css("display:inline")
+
   object Background{
     val default = Figures.background.css("background:white;")
     val illegal = Figures.background.css("background:red;")
@@ -41,6 +44,6 @@ trait Layout{
   val showAnotherWorld = effects.fallForward(Figures.background, Figures.fukusuke, Figures.menu, Figures.lambda)
   val introduction = effects.introduction(Figures.fish, Figures.fish2, Figures.name)
 
-  val defaultStyles = base :+ Fukusuke.base
+  val defaultStyles = base :+ Fukusuke.base :+ tooltip
   val illegalStyles = base :+ Background.illegal :+ Fukusuke.apology
 }

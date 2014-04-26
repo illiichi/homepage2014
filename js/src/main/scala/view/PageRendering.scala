@@ -50,7 +50,10 @@ class PageRendering(){
               img(`class` := "logo",  src:="images/illi-ichi_logo.svg"),
               img(`class` := "kanji", src:="images/illi-ichi_kanji.svg")
             ),
-            input(placeholder:="type one of below", id := Ids.menu_input),
+            div(`class` := "tooltip")(
+              input(placeholder:="type one of below", id := Ids.menu_input),
+              img(styles.attrRx(Ids.tooltip), src := "images/tooltip.svg")
+            ),
             img(`class` := "menu", src:= "images/menu.svg"),
             UserAgent.ifSmartPhone(div("* this page is only for PC *"))
           )
