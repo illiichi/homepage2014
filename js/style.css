@@ -113,3 +113,8 @@ div.tooltip img {
     margin-left: 5%;
     bottom:50%;
 }
+
+.caution {
+    color: red;
+    font-weight: bold;
+}

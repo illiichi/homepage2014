@@ -55,7 +55,8 @@ class PageRendering(){
               img(styles.attrRx(Ids.tooltip), src := "images/tooltip.svg")
             ),
             img(`class` := "menu", src:= "images/menu.svg"),
-            UserAgent.ifSmartPhone(div("* this page is only for PC *"))
+            UserAgent.ifSmartPhone(
+              div(`class` := "caution")("* This page is only for PC *"))
           )
         )
       ).toString
